@@ -1,5 +1,6 @@
 ﻿using Catalyst;
 using Mosaik.Core;
+using Newtonsoft.Json;
 
 namespace NLP;
 
@@ -10,7 +11,8 @@ public class Program {
     var nlp = await Pipeline.ForAsync(Language.English);
     var doc = new Document("The quick brown fox jumps over the lazy dog", Language.English);
     nlp.ProcessSingle(doc);
-    Console.WriteLine(doc.ToJson());
+    string prettyJson = JsonConvert.SerializeObject(doc, Formatting.Indented);
+    Console.WriteLine(prettyJson);
   }
 }
 
