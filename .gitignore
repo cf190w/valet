@@ -2,3 +2,6 @@ nlp/bin/
 nlp/obj/
 stt/bin/
 stt/obj/
+vosk_stt/bin
+vosk_stt/obj
+vosk_stt/vosk-*
