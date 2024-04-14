@@ -5,3 +5,5 @@ stt/obj/
 vosk_stt/bin
 vosk_stt/obj
 vosk_stt/vosk-*
+shortCuts/bin
+shortCuts/obj
