@@ -116,9 +116,6 @@ static class Program
         Process.Start(processName);
         return;
     } 
-   // public static void stop(){
-        //Stop(Process.GetCurrentProcess()) ;
-   // }
     /// <summary>
     /// stops all process with this name
     /// e.g if you had 5 instances of chrome open it would delete them all
