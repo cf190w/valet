@@ -1,8 +1,7 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Drawing;
-using System;
-using System.Threading;
 using System.Runtime.InteropServices;
+using System.Windows;
 
 static class Program
 {
@@ -17,6 +16,20 @@ static class Program
 
     [DllImport("user32.dll")]
     public static extern int GetProcessId(IntPtr handle);
+
+    [DllImport("user32.dll", EntryPoint = "SendMessageW")]  
+    public static extern int SendMessageW([InAttribute] System.IntPtr hWnd, int Msg, int wParam, IntPtr lParam);  
+    public const int WM_GETTEXT = 13;  
+    
+    [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]  
+    internal static extern IntPtr GetFocus();
+
+    [DllImport("user32", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]  
+    internal static extern int AttachThreadInput(int idAttach, int idAttachTo, bool fAttach);  
+    [DllImport("kernel32.dll")]  
+    internal static extern int GetCurrentThreadId();  
+
+   // private IKeyboardMouseEvents globalMouseHook
     
    // [DllImport("user32.dll")]
    // public static extern int GetForegroundWindow();
@@ -70,12 +83,14 @@ static class Program
                 Console.WriteLine(processId);
                 Console.WriteLine(processName);
                 
+                Console.WriteLine(GetTextFromFocusedControl());
+                
                 Console.WriteLine("process.getWindow: "+pointer);
                 Console.WriteLine("process.getProcess: "+check.Id);
                 
                 
                 //Console.WriteLine(GetProcessesFileName(processId, out processName));
-                Stop(fgproc.ProcessName);
+                //Stop(fgproc.ProcessName);
             }
         }
         catch(Exception ex)
@@ -102,9 +117,9 @@ static class Program
         Process.Start(processName);
         return;
     } 
-    public static void stop(){
+   // public static void stop(){
         //Stop(Process.GetCurrentProcess()) ;
-    }
+   // }
     /// <summary>
     /// stops all process with this name
     /// e.g if you had 5 instances of chrome open it would delete them all
@@ -116,4 +131,52 @@ static class Program
             aProcess.Kill();
         }
     }
+
+    public static void CopyFromEditor(){
+       
+    }   
+    private static IntPtr GetFocusedControl()  
+    {  
+ 
+        int activeWinPtr = GetForegroundWindow().ToInt32();  
+        uint activeThreadId = 0, processId;  
+        activeThreadId = GetWindowThreadProcessId(activeWinPtr, out processId);  
+        int currentThreadId = GetCurrentThreadId();  
+        if (activeThreadId != currentThreadId)  
+        AttachThreadInput((int)activeThreadId, currentThreadId, true);  
+        IntPtr activeCtrlId = GetFocus();  
+  
+        return activeCtrlId;  
+       
+    }  
+     private static string GetTextFromFocusedControl()  
+    {  
+      try  
+      {  
+        int activeWinPtr = GetForegroundWindow().ToInt32();  
+        uint activeThreadId = 0, processId;  
+        activeThreadId = GetWindowThreadProcessId(activeWinPtr, out processId);  
+        int currentThreadId = GetCurrentThreadId();  
+        if (activeThreadId != currentThreadId)  
+        AttachThreadInput((int)activeThreadId, currentThreadId, true);  
+        IntPtr activeCtrlId = GetFocus();  
+  
+        return GetText(activeCtrlId);  
+      }  
+      catch (Exception exp)  
+      {  
+        return exp.Message;  
+      }  
+    }  
+    private static string GetText(IntPtr handle)  
+    {  
+      int maxLength = 100;  
+      IntPtr buffer = Marshal.AllocHGlobal((maxLength + 1) * 2);  
+      SendMessageW(handle, WM_GETTEXT, maxLength, buffer);  
+      string w = Marshal.PtrToStringUni(buffer);  
+      Marshal.FreeHGlobal(buffer);  
+      return w;  
+    }  
+     
 }
+

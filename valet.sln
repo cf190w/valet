@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nlp", "nlp\nlp.csproj", "{4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stt", "stt\stt.csproj", "{9B7DB847-6ED7-4E3C-9508-899546D1D25A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcuts", "Shortcuts\Shortcuts.csproj", "{05612381-EC84-45F6-A3C9-44DA2D62CE3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9B7DB847-6ED7-4E3C-9508-899546D1D25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7DB847-6ED7-4E3C-9508-899546D1D25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7DB847-6ED7-4E3C-9508-899546D1D25A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05612381-EC84-45F6-A3C9-44DA2D62CE3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05612381-EC84-45F6-A3C9-44DA2D62CE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05612381-EC84-45F6-A3C9-44DA2D62CE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05612381-EC84-45F6-A3C9-44DA2D62CE3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
