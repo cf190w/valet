@@ -7,8 +7,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-<itemGroup>
+  <ItemGroup>
     <PackageReference Include="MouseKeyHook" Version="5.7.1" />
-  </itemGroup>
-  
+  </ItemGroup>
 </Project>
