@@ -22,34 +22,47 @@ public class Program
     nlp.ProcessSingle(doc);
 
     //Formatting
+    // Convert the 'doc' object to a JSON string and print it to the console
     Console.WriteLine(doc.ToJson());
+    // Convert the 'doc' object to a pretty (indented) JSON string
     string prettyJson = JsonConvert.SerializeObject(doc, Formatting.Indented);
+    // Print the pretty JSON string to the console
     Console.WriteLine(prettyJson);
 
     
+    // Count the number of verbs in the 'doc' object and print the count to the console
     int verbs = verbCount(doc);
     Console.WriteLine($"The document contains {verbs} verbs.");
 
+    // Count the number of nouns in the 'doc' object and print the count to the console
     int nouns = nounCount(doc);
     Console.WriteLine($"The document contains {nouns} nouns.");
 
+    // Check if the 'input' string contains the word "copy"
     if (input.Contains("copy"))
     {
+        // If it does, call the 'wordCopyFunction' function
         wordCopyFunction();
     }
+    // Check if the 'input' string contains the word "paste"
     else if (input.Contains("paste"))
     {
+        // If it does, call the 'wordPasteFunction' function
         wordPasteFunction();
     }
+    // Check if the 'input' string contains the word "close"
     else if (input.Contains("close"))
     {
+        // If it does, call the 'closeApplicationFunction' function
         closeApplicationFunction();
     }
     else
     {
+        // If the 'input' string doesn't contain any of the above words, print an error message
         Console.WriteLine("Invalid input. Please try again.");
     }
 
+    // Call the 'wordCopyFunction', 'wordPasteFunction', and 'closeApplicationFunction' functions
     wordCopyFunction();
     wordPasteFunction();
     closeApplicationFunction();
