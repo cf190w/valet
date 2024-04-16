@@ -38,6 +38,8 @@ public class Program
     int nouns = nounCount(doc);
     Console.WriteLine($"The document contains {nouns} nouns.");
 
+    /*
+
     // Check if the 'input' string contains the word "copy"
     if (input.Contains("copy"))
     {
@@ -61,11 +63,8 @@ public class Program
         // If the 'input' string doesn't contain any of the above words, print an error message
         Console.WriteLine("Invalid input. Please try again.");
     }
-
-    // Call the 'wordCopyFunction', 'wordPasteFunction', and 'closeApplicationFunction' functions
-    wordCopyFunction();
-    wordPasteFunction();
-    closeApplicationFunction();
+    
+    */
 
   }
 
@@ -121,29 +120,34 @@ public class Program
     return nounCount;
   }
 
-  /// <summary>
-  /// Function for the word copy to be called 
-  /// </summary>
-  public static void wordCopyFunction ()
-  {
+    /*
 
-  }
+    /// <summary>
+    /// Function for the word copy to be called 
+    /// </summary>
+    public static void wordCopyFunction ()
+    {
 
-  /// <summary>
-  /// Function for the word paste to be called 
-  /// </summary>
-  public static void wordPasteFunction ()
-  {
+    }
 
-  }
+    /// <summary>
+    /// Function for the word paste to be called 
+    /// </summary>
+    public static void wordPasteFunction ()
+    {
 
-  /// <summary>
-  /// Function for the word close to be called 
-  /// </summary>
-  public static void closeApplicationFunction ()
-  {
+    }
 
-  }
+    /// <summary>
+    /// Function for the word close to be called 
+    /// </summary>
+    public static void closeApplicationFunction ()
+    {
+
+    }
+
+    */
+
 }
 
 
