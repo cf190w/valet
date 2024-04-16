@@ -74,17 +74,24 @@ public class Program
   /// </summary>
   public static int verbCount (Document doc)
   {
+    // Initialize a counter for the verbs
     int verbCount = 0;
+
+    // Loop through each token list in the document
     foreach (var tokenList in doc.TokensData)
     {
+        // Loop through each token in the token list
         foreach (var token in tokenList)
         {
+            // If the part of speech of the token is a verb
             if (token.Tag == PartOfSpeech.VERB)
             {
+                // Increment the verb counter
                 verbCount++;
             }
         }
     }
+    // Return the count of verbs
     return verbCount;
   }
 
@@ -93,17 +100,24 @@ public class Program
   /// </summary>
   public static int nounCount (Document doc)
   {
+    // Initialize a counter for the nouns
     int nounCount = 0;
+
+    // Loop through each token list in the document
     foreach (var tokenList in doc.TokensData)
     {
+        // Loop through each token in the token list
         foreach (var token in tokenList)
         {
+            // If the part of speech of the token is a noun
             if (token.Tag == PartOfSpeech.NOUN)
             {
+                // Increment the noun counter
                 nounCount++;
             }
         }
     }
+    // Return the count of nouns
     return nounCount;
   }
 
