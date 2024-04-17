@@ -6,7 +6,7 @@ import os
 import pyaudio
 
 #Load the vosk model
-model_path = "~/school/tmux_voice/vosk-model-small-en-us-0.15"
+model_path = ""
 model_path = os.path.expanduser(model_path)
 if not os.path.exists(model_path):
     print(f"Model path {model_path} does not exist.")
