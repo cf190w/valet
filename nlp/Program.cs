@@ -61,7 +61,6 @@ public class Program
             // If the 'input' string doesn't contain any of the above words, print an error message
             Console.WriteLine("Invalid input. Please try again.");
         }
-
     }
 
     /// <summary>
