@@ -11,7 +11,11 @@ model_path = "vosk-model-en-us-0.22"
 model_path = os.path.expanduser(model_path)
 if not os.path.exists(model_path):
     print(f"Model path {model_path} does not exist.")
-    sys.exit(1)
+    # Check if the text file exists
+
+if os.path.exists("C:/Users/riley/OneDrive/Desktop/stt/recognized_text.txt"):
+        # Clear the contents of the text file
+        open("C:/Users/riley/OneDrive/Desktop/stt/recognized_text.txt", "w").close()    
 vosk_model = vosk.Model(model_path)
 
 # Create a vosk recognizer
@@ -22,11 +26,11 @@ p = pyaudio.PyAudio()
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
 
 # Open a text file in append mode
-text_file = open("C:/Users/coone/valet/python_stt", "a")
+text_file = open("C:/Users/riley/OneDrive/Desktop/stt/recognized_text.txt", "a")
 
 print("listening...")
 while True:
-    data = stream.read(4000)
+    data = stream.read(8000)
     if len(data) == 0:
         break
     if recognizer.AcceptWaveform(data):
