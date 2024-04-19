@@ -127,6 +127,13 @@ static class Program
             aProcess.Kill();
         }
     }
+    public static void StopActive(){
+        Process fgproc = GetForegroundProcess();
+        Process[] process = Process.GetProcessesByName(fgproc.ProcessName);
+        foreach(Process aProcess in process){
+            aProcess.Kill();
+        }
+    }
 
     public static void CopyFromEditor(){
        
@@ -169,7 +176,7 @@ static class Program
       int maxLength = 100;  
       IntPtr buffer = Marshal.AllocHGlobal((maxLength + 1) * 2);  
       SendMessageW(handle, WM_GETTEXT, maxLength, buffer);  
-      string w = Marshal.PtrToStringUni(buffer);  
+      String w = Marshal.PtrToStringUni(buffer);  
       Marshal.FreeHGlobal(buffer);  
       return w;  
     }  
