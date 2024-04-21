@@ -8,3 +8,4 @@ vosk_stt/vosk-*
 shortCuts/bin
 shortCuts/obj
 python_stt/vosk-*
+.vs/
