@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("shortcutsWinForm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6f55557e19e5d43070e60721b4d7e72eadd239c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8267444f65137f7eaad8f27efc7797833273869")]
 [assembly: System.Reflection.AssemblyProductAttribute("shortcutsWinForm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("shortcutsWinForm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

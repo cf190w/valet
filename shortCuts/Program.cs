@@ -14,9 +14,6 @@ static class Program
     [DllImport("user32.dll")]
     public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint pdwProcessId);
 
-    [DllImport("user32.dll")]
-    public static extern int GetProcessId(IntPtr handle);
-
     [DllImport("user32.dll", EntryPoint = "SendMessageW")]  
     public static extern int SendMessageW([InAttribute] System.IntPtr hWnd, int Msg, int wParam, IntPtr lParam);  
     public const int WM_GETTEXT = 13;  
@@ -31,12 +28,6 @@ static class Program
     [DllImport("kernel32.dll")]  
     internal static extern int GetCurrentThreadId();  
 
-
-
-   // private IKeyboardMouseEvents globalMouseHook
-    
-   // [DllImport("user32.dll")]
-   // public static extern int GetForegroundWindow();
     [DllImport("user32.dll")]
     public static extern IntPtr GetForegroundWindow();
 
@@ -88,10 +79,8 @@ static class Program
                 Console.WriteLine(processId);
                 Console.WriteLine(processName);
                 
-                Console.WriteLine(GetTextFromFocusedControl());
-                //refreshBrowserTab();
-                copy();
-                paste();
+                //Console.WriteLine(GetTextFromFocusedControl());
+
                 Console.WriteLine("process.getWindow: "+pointer);
                 Console.WriteLine("process.getProcess: "+check.Id);
                 
@@ -108,14 +97,7 @@ static class Program
         }
         
     }
-    public static Process FindProcess(IntPtr handle){
-        foreach(Process process in Process.GetProcesses()){
-            if(process.Handle == handle){
-                return process;
-            }
-        }
-        return null;
-    }
+
     /// <summary>
     /// starts any given process using the name of the name of the process
     /// </summary>
@@ -124,6 +106,7 @@ static class Program
         Process.Start(processName);
         return;
     } 
+    
     /// <summary>
     /// stops all process with this name
     /// e.g if you had 5 instances of chrome open it would delete them all
@@ -135,6 +118,12 @@ static class Program
             aProcess.Kill();
         }
     }
+    
+    /// <summary>
+    /// gets the active process name 
+    /// stops all process with this name
+    /// e.g if you had 5 instances of chrome open it would delete them all
+    /// </summary>
     public static void StopActive(){
         Process fgproc = GetForegroundProcess();
         Process[] process = Process.GetProcessesByName(fgproc.ProcessName);
@@ -142,6 +131,10 @@ static class Program
             aProcess.Kill();
         }
     }
+        
+    /// <summary>
+    /// refreshes the active window
+    /// </summary>
     public static void refresh(){
         Process [] processes = Process.GetProcessesByName("iexplore");
 
@@ -168,19 +161,22 @@ static class Program
         SendKeys.SendWait("{f5}");
     }
 
+    /// <summary>
+    /// closes the active tab in a browser
+    /// </summary>
+    public static void closeTab()
+    {
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
 
-    [DllImport("user32.dll", SetLastError = true)]
-    static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
-    public static void PressKey(Keys key, bool up) {
-        const int KEYEVENTF_EXTENDEDKEY = 0x1;
-        const int KEYEVENTF_KEYUP = 0x2;
-        if (up) {
-            keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, (UIntPtr) 0);
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
         }
-        else {
-            keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY, (UIntPtr) 0);
-        }
+        SendKeys.SendWait("^w");
     }
+
 
     /// <summary>
     /// copys the current text highlighted
@@ -196,6 +192,7 @@ static class Program
         }
         SendKeys.SendWait("^c");
     }
+    
     /// <summary>
     /// pastes text from clipboard
     /// </summary>
@@ -210,24 +207,38 @@ static class Program
         }
         SendKeys.SendWait("^v");
     }
-    public static void CopyFromEditor(){
-       
-    }   
-    private static IntPtr GetFocusedControl()  
-    {  
- 
-        int activeWinPtr = GetForegroundWindow().ToInt32();  
-        uint activeThreadId = 0, processId;  
-        activeThreadId = GetWindowThreadProcessId(activeWinPtr, out processId);  
-        int currentThreadId = GetCurrentThreadId();  
-        if (activeThreadId != currentThreadId)  
-        AttachThreadInput((int)activeThreadId, currentThreadId, true);  
-        IntPtr activeCtrlId = GetFocus();  
-  
-        return activeCtrlId;  
-       
-    }  
-     private static string GetTextFromFocusedControl()  
+    
+    /// <summary>
+    /// undoes the last changes to text
+    /// </summary>
+    public static void undo(){
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
+
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("^z");
+    }
+
+    /// <summary>
+    /// redoes the last changes to text
+    /// </summary>
+    public static void redo(){
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
+
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("^y");
+    }
+
+    /* private static string GetTextFromFocusedControl()  
     {  
       try  
       {  
@@ -254,7 +265,7 @@ static class Program
       String w = Marshal.PtrToStringUni(buffer);  
       Marshal.FreeHGlobal(buffer);  
       return w;  
-    }  
+    }  */
      
 }
 
