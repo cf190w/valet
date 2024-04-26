@@ -16,3 +16,5 @@ nlp/stt/nlp.pdb
 nlp/stt/vosk*
 nlp/stt/sttlog.txt
 nlp/stt/*.txt
+shortcutsWinForm/bin
+shortcutsWinForm/obj
