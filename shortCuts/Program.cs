@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 static class Program
 {
@@ -22,11 +23,15 @@ static class Program
     
     [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]  
     internal static extern IntPtr GetFocus();
+    [DllImport("user32.dll")]
+    public static extern int SetForegroundWindow(IntPtr hWnd);
 
     [DllImport("user32", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]  
     internal static extern int AttachThreadInput(int idAttach, int idAttachTo, bool fAttach);  
     [DllImport("kernel32.dll")]  
     internal static extern int GetCurrentThreadId();  
+
+
 
    // private IKeyboardMouseEvents globalMouseHook
     
@@ -68,7 +73,8 @@ static class Program
             uint pointer;
             IntPtr processId;
             String processName = "";
-            //while(Console.In.ReadLine() != "end"){
+
+
             while(true){
                 Thread.Sleep(1000);
                 processId = GetWindowUnderCursor();
@@ -83,7 +89,9 @@ static class Program
                 Console.WriteLine(processName);
                 
                 Console.WriteLine(GetTextFromFocusedControl());
-                
+                //refreshBrowserTab();
+                copy();
+                paste();
                 Console.WriteLine("process.getWindow: "+pointer);
                 Console.WriteLine("process.getProcess: "+check.Id);
                 
@@ -127,7 +135,81 @@ static class Program
             aProcess.Kill();
         }
     }
+    public static void StopActive(){
+        Process fgproc = GetForegroundProcess();
+        Process[] process = Process.GetProcessesByName(fgproc.ProcessName);
+        foreach(Process aProcess in process){
+            aProcess.Kill();
+        }
+    }
+    public static void refresh(){
+        Process [] processes = Process.GetProcessesByName("iexplore");
 
+            foreach(Process proc in processes)
+            {
+                SetForegroundWindow(proc.MainWindowHandle);
+                SendKeys.SendWait("{f5}");
+            }
+
+    }
+
+    /// <summary>
+    /// finds active tab and refreshes it
+    /// </summary>
+    public static void refreshBrowserTab(){
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
+
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("{f5}");
+    }
+
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
+    public static void PressKey(Keys key, bool up) {
+        const int KEYEVENTF_EXTENDEDKEY = 0x1;
+        const int KEYEVENTF_KEYUP = 0x2;
+        if (up) {
+            keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, (UIntPtr) 0);
+        }
+        else {
+            keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY, (UIntPtr) 0);
+        }
+    }
+
+    /// <summary>
+    /// copys the current text highlighted
+    /// </summary>
+    public static void copy(){
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
+
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("^c");
+    }
+    /// <summary>
+    /// pastes text from clipboard
+    /// </summary>
+    public static void paste(){
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
+
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("^v");
+    }
     public static void CopyFromEditor(){
        
     }   
@@ -169,7 +251,7 @@ static class Program
       int maxLength = 100;  
       IntPtr buffer = Marshal.AllocHGlobal((maxLength + 1) * 2);  
       SendMessageW(handle, WM_GETTEXT, maxLength, buffer);  
-      string w = Marshal.PtrToStringUni(buffer);  
+      String w = Marshal.PtrToStringUni(buffer);  
       Marshal.FreeHGlobal(buffer);  
       return w;  
     }  

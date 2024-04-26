@@ -8,3 +8,13 @@ vosk_stt/vosk-*
 shortCuts/bin
 shortCuts/obj
 python_stt/vosk-*
+.vs/
+nlp/stt/nlp
+nlp/stt/*.so
+nlp/stt/linux-x64
+nlp/stt/nlp.pdb
+nlp/stt/vosk*
+nlp/stt/sttlog.txt
+nlp/stt/*.txt
+shortcutsWinForm/bin
+shortcutsWinForm/obj

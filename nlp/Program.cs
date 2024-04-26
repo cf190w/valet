@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Catalyst;
 using Catalyst.Models;
 using Mosaik.Core;
 using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace NLP;
 
@@ -12,6 +12,33 @@ public class Program
 {
     public static async Task Main() 
     {
+        Console.WriteLine("Running C# Program");
+        Process pythonProcess = new Process();
+        pythonProcess.StartInfo.FileName = "python";
+        pythonProcess.StartInfo.Arguments = "vosk_stt.py";
+        pythonProcess.StartInfo.UseShellExecute = false;
+        pythonProcess.StartInfo.RedirectStandardOutput = true;
+
+        pythonProcess.Start();
+        string previousOutput = string.Empty;
+
+        while (!pythonProcess.HasExited)
+        {
+            string currentOutput = pythonProcess.StandardOutput.ReadToEnd();
+            
+            if (!string.IsNullOrEmpty(currentOutput))
+            {
+                if (currentOutput.EndsWith('\n'))
+                {
+                    Console.Write(currentOutput);
+                }
+                else
+                {
+                    previousOutput += currentOutput;
+                }
+            }
+        }
+
         //Register the English language model
         Catalyst.Models.English.Register(); //You need to pre-register each language (and install the respective NuGet Packages)
         // Configure storage
