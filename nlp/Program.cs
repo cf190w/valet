@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Catalyst;
 using Mosaik.Core;
@@ -10,57 +11,86 @@ public class Program
 {
     public static async Task Main() 
     {
-        //Register the English language model
-        Catalyst.Models.English.Register(); //You need to pre-register each language (and install the respective NuGet Packages)
-        // Configure storage
-        Storage.Current = new DiskStorage("catalyst-models");
-        // Create a Catalyst NLP pipeline for English
-        var nlp = await Pipeline.ForAsync(Language.English);
-        // Input text and create a document
-        var doc = new Document("Hey Valet. Can you copy and paste this text", Language.English);
-        // Process the document
-        nlp.ProcessSingle(doc);
+      Console.WriteLine("Running C# Program");
+      Process pythonProcess = new Process();
+      pythonProcess.StartInfo.FileName = "python";
+      pythonProcess.StartInfo.Arguments = "vosk_stt.py";
+      pythonProcess.StartInfo.UseShellExecute = false;
+      pythonProcess.StartInfo.RedirectStandardOutput = true;
 
-        //Formatting
-        // Convert the 'doc' object to a JSON string and print it to the console
-        Console.WriteLine(doc.ToJson());
-        // Convert the 'doc' object to a pretty (indented) JSON string
-        string prettyJson = JsonConvert.SerializeObject(doc, Formatting.Indented);
-        // Print the pretty JSON string to the console
-        Console.WriteLine(prettyJson);
-
-
-        // Count the number of verbs in the 'doc' object and print the count to the console
-        int numVerbs = verbCount(doc);
-        Console.WriteLine($"The document contains {numVerbs} verbs.");
-
-        // Count the number of nouns in the 'doc' object and print the count to the console
-        int numNouns = nounCount(doc);
-        Console.WriteLine($"The document contains {numNouns} nouns.");
-
-        // Check if the 'input' string contains the word "copy"
-        if (doc.Value.Contains("copy"))
+      pythonProcess.Start();
+        string previousOutput = string.Empty;
+        
+        while (!pythonProcess.HasExited)
         {
-            // If it does, call the 'wordCopyFunction' function
-            wordCopyFunction();
+            string currentOutput = pythonProcess.StandardOutput.ReadToEnd();
+            
+            if (!string.IsNullOrEmpty(currentOutput))
+            {
+                if (currentOutput.EndsWith('\n'))
+                {
+                    Console.Write(currentOutput);
+                }
+                else
+                {
+                    previousOutput += currentOutput;
+                }
+            }
         }
-        // Check if the 'input' string contains the word "paste"
-        else if (doc.Value.Contains("paste"))
-        {
-            // If it does, call the 'wordPasteFunction' function
-            wordPasteFunction();
-        }
-        // Check if the 'input' string contains the word "close"
-        else if (doc.Value.Contains("close"))
-        {
-            // If it does, call the 'closeApplicationFunction' function
-            closeApplicationFunction();
-        }
-        else
-        {
-            // If the 'input' string doesn't contain any of the above words, print an error message
-            Console.WriteLine("Invalid input. Please try again.");
-        }
+        
+        Console.WriteLine("Python process has exited.");
+
+      //Register the English language model
+      Catalyst.Models.English.Register(); //You need to pre-register each language (and install the respective NuGet Packages)
+      // Configure storage
+      Storage.Current = new DiskStorage("catalyst-models");
+      // Create a Catalyst NLP pipeline for English
+      var nlp = await Pipeline.ForAsync(Language.English);
+      // Input text and create a document
+      var doc = new Document("Hey Valet. Can you copy and paste this text", Language.English);
+      // Process the document
+      nlp.ProcessSingle(doc);
+
+      //Formatting
+      // Convert the 'doc' object to a JSON string and print it to the console
+      Console.WriteLine(doc.ToJson());
+      // Convert the 'doc' object to a pretty (indented) JSON string
+      string prettyJson = JsonConvert.SerializeObject(doc, Formatting.Indented);
+      // Print the pretty JSON string to the console
+      Console.WriteLine(prettyJson);
+
+
+      // Count the number of verbs in the 'doc' object and print the count to the console
+      int numVerbs = verbCount(doc);
+      Console.WriteLine($"The document contains {numVerbs} verbs.");
+
+      // Count the number of nouns in the 'doc' object and print the count to the console
+      int numNouns = nounCount(doc);
+      Console.WriteLine($"The document contains {numNouns} nouns.");
+
+      // Check if the 'input' string contains the word "copy"
+      if (doc.Value.Contains("copy"))
+      {
+        // If it does, call the 'wordCopyFunction' function
+        wordCopyFunction();
+      }
+      // Check if the 'input' string contains the word "paste"
+      else if (doc.Value.Contains("paste"))
+      {
+          // If it does, call the 'wordPasteFunction' function
+          wordPasteFunction();
+      }
+      // Check if the 'input' string contains the word "close"
+      else if (doc.Value.Contains("close"))
+      {
+          // If it does, call the 'closeApplicationFunction' function
+          closeApplicationFunction();
+      }
+      else
+      {
+          // If the 'input' string doesn't contain any of the above words, print an error message
+          Console.WriteLine("Invalid input. Please try again.");
+      }
     }
 
     /// <summary>
@@ -138,7 +168,6 @@ public class Program
     {
         Console.WriteLine("Close");
     }
-
 }
 
 
