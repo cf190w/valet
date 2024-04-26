@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Windows.Forms.Keys;
+using System.Windows.Forms;
 
 static class Program
 {
@@ -31,6 +30,8 @@ static class Program
     internal static extern int AttachThreadInput(int idAttach, int idAttachTo, bool fAttach);  
     [DllImport("kernel32.dll")]  
     internal static extern int GetCurrentThreadId();  
+
+
 
    // private IKeyboardMouseEvents globalMouseHook
     
@@ -88,7 +89,9 @@ static class Program
                 Console.WriteLine(processName);
                 
                 Console.WriteLine(GetTextFromFocusedControl());
-                refresh();
+                //refreshBrowserTab();
+                copy();
+                paste();
                 Console.WriteLine("process.getWindow: "+pointer);
                 Console.WriteLine("process.getProcess: "+check.Id);
                 
@@ -145,38 +148,67 @@ static class Program
             foreach(Process proc in processes)
             {
                 SetForegroundWindow(proc.MainWindowHandle);
-                SendKeys.SendWait("{F5}");
+                SendKeys.SendWait("{f5}");
             }
 
     }
 
-[DllImport("user32.dll", SetLastError = true)]
-static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
-public static void PressKey(Keys key, bool up) {
-    const int KEYEVENTF_EXTENDEDKEY = 0x1;
-    const int KEYEVENTF_KEYUP = 0x2;
-    if (up) {
-        keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, (UIntPtr) 0);
-    }
-    else {
-        keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY, (UIntPtr) 0);
-    }
-}
+    /// <summary>
+    /// finds active tab and refreshes it
+    /// </summary>
+    public static void refreshBrowserTab(){
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
 
-void TestProc() {
-    PressKey(Keys.ControlKey, false);
-    PressKey(Keys.P, false);
-    PressKey(Keys.P, true);
-    PressKey(Keys.ControlKey, true);
-}
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("{f5}");
+    }
+
+
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
+    public static void PressKey(Keys key, bool up) {
+        const int KEYEVENTF_EXTENDEDKEY = 0x1;
+        const int KEYEVENTF_KEYUP = 0x2;
+        if (up) {
+            keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, (UIntPtr) 0);
+        }
+        else {
+            keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY, (UIntPtr) 0);
+        }
+    }
+
+    /// <summary>
+    /// copys the current text highlighted
+    /// </summary>
     public static void copy(){
-        Process [] processes = Process.GetProcessesByName("iexplore");
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
 
-            foreach(Process proc in processes)
-            {
-                SetForegroundWindow(proc.MainWindowHandle);
-                SendKeys.SendWait("{F5}");
-            }
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("^c");
+    }
+    /// <summary>
+    /// pastes text from clipboard
+    /// </summary>
+    public static void paste(){
+        Process fgproc = GetForegroundProcess();
+        Process [] processes = Process.GetProcessesByName(fgproc.ProcessName);
+
+        foreach(Process proc in processes)
+        {
+            SetForegroundWindow(proc.MainWindowHandle);
+            
+        }
+        SendKeys.SendWait("^v");
     }
     public static void CopyFromEditor(){
        

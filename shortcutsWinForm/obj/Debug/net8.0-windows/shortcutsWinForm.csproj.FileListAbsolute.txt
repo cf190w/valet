@@ -1,0 +1,15 @@
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.exe
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.deps.json
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.runtimeconfig.json
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.dll
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.pdb
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.AssemblyInfoInputs.cache
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.AssemblyInfo.cs
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.csproj.CoreCompileInputs.cache
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.sourcelink.json
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.dll
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\refint\shortcutsWinForm.dll
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.pdb
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.genruntimeconfig.cache
+C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\obj\Debug\net8.0-windows\ref\shortcutsWinForm.dll
