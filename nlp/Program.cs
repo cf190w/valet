@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Catalyst;
+using Catalyst.Models;
 using Mosaik.Core;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace NLP;
 
@@ -17,7 +19,7 @@ public class Program
         // Create a Catalyst NLP pipeline for English
         var nlp = await Pipeline.ForAsync(Language.English);
         // Input text and create a document
-        var doc = new Document("Hey Valet. Can you copy and paste this text", Language.English);
+        var doc = new Document("Hey Valet. Can you refresh the tab", Language.English);
         // Process the document
         nlp.ProcessSingle(doc);
 
@@ -29,16 +31,16 @@ public class Program
         // Print the pretty JSON string to the console
         Console.WriteLine(prettyJson);
 
-
+        //Counting the amount of verbs and nouns in the sentence
         // Count the number of verbs in the 'doc' object and print the count to the console
         int numVerbs = verbCount(doc);
         Console.WriteLine($"The document contains {numVerbs} verbs.");
-
         // Count the number of nouns in the 'doc' object and print the count to the console
         int numNouns = nounCount(doc);
         Console.WriteLine($"The document contains {numNouns} nouns.");
 
-        // Check if the 'input' string contains the word "copy"
+        //Checking the input for specific words
+        // Check if the 'input' string contains the word "copy" 
         if (doc.Value.Contains("copy"))
         {
             // If it does, call the 'wordCopyFunction' function
@@ -55,6 +57,46 @@ public class Program
         {
             // If it does, call the 'closeApplicationFunction' function
             closeApplicationFunction();
+        }
+        else if (doc.Value.Contains("open"))
+        {
+            // If it does, call the 'openApplicationFunction' function
+            openApplicationFunction();
+        }
+        else if(doc.Value.Contains("start"))
+        {
+            // If it does, call the 'startProcessFunction' function
+            startProcessFunction();
+        }
+        else if(doc.Value.Contains("stop"))
+        {
+            // If it does, call the 'stopProcessFunction' function
+            stopProcessFunction();
+        }
+        else if(doc.Value.Contains("kill"))
+        {
+            // If it does, call the 'killProcessFunction' function
+            killProcessFunction();
+        }
+        else if(doc.Value.Contains("refresh"))
+        {
+            // If it does, call the 'refreshPageFunction' function
+            refreshPageFunction();
+        }
+        else if(doc.Value.Contains("editor"))
+        {
+            // If it does, call the 'copyFromEditorFunction' function
+            copyFromEditorFunction();
+        }
+        else if (doc.Value.Contains("focused") && doc.Value.Contains("control"))
+        {
+            // If it does, call the 'getFocusedControlFunction' function
+            getFocusedControlFunction();
+        }
+        else if (doc.Value.Contains("get") && doc.Value.Contains("text"))
+        {
+            // If it does, call the 'getTextFunction' function
+            getTextFunction();
         }
         else
         {
@@ -116,9 +158,9 @@ public class Program
     }
 
     /// <summary>
-    /// Function for the word copy to be called 
+    /// Function for the word copy to be called and copies highlighted text
     /// </summary>
-    public static void wordCopyFunction ()
+    public static void wordCopyFunction()
     {
         Console.WriteLine("Copy");
     }
@@ -139,6 +181,68 @@ public class Program
         Console.WriteLine("Close");
     }
 
+    /// <summary>
+    /// Function for the word open to be called
+    /// </summary>
+    public static void openApplicationFunction ()
+    {
+        Console.WriteLine("Open");
+    }
+
+    /// <summary>
+    /// Function to be called to start any given process using the name of the name of the process
+    /// </summary>
+    public static void startProcessFunction ()
+    {
+        Console.WriteLine("Start");
+    }
+
+    /// <summary>
+    /// Function to be called to stop all process with this name
+    /// e.g if you had 5 instances of chrome open it would delete them all
+    /// </summary>
+    public static void stopProcessFunction ()
+    {
+        Console.WriteLine("Stop");
+    }
+
+    /// <summary>
+    /// Function to be called to stop or kill the currently active or foreground process on your system
+    /// </summary>
+    public static void killProcessFunction ()
+    {
+        Console.WriteLine("Kill");
+    }
+
+    /// <summary>
+    /// Function to be called to refresh a page
+    /// </summary>
+    public static void refreshPageFunction ()
+    {
+        Console.WriteLine("Refresh");
+    }
+
+    /// <summary>
+    /// Function to be called to copy from editor
+    /// </summary>
+    public static void copyFromEditorFunction ()
+    {
+        Console.WriteLine("Copy from Editor");
+    }
+
+    /// <summary>
+    /// Function to be called to get focused control
+    /// </summary>
+    public static void getFocusedControlFunction ()
+    {
+        Console.WriteLine("Get Focused Control");
+    }
+
+    /// <summary>
+    /// Function to be called to get text
+    /// </summary>
+    public static void getTextFunction ()
+    {
+        Console.WriteLine("Get Text");
+    }
 }
-
-
