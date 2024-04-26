@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Windows.Forms.Keys;
 
 static class Program
 {
@@ -22,6 +24,8 @@ static class Program
     
     [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]  
     internal static extern IntPtr GetFocus();
+    [DllImport("user32.dll")]
+    public static extern int SetForegroundWindow(IntPtr hWnd);
 
     [DllImport("user32", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]  
     internal static extern int AttachThreadInput(int idAttach, int idAttachTo, bool fAttach);  
@@ -68,7 +72,8 @@ static class Program
             uint pointer;
             IntPtr processId;
             String processName = "";
-            //while(Console.In.ReadLine() != "end"){
+
+
             while(true){
                 Thread.Sleep(1000);
                 processId = GetWindowUnderCursor();
@@ -83,7 +88,7 @@ static class Program
                 Console.WriteLine(processName);
                 
                 Console.WriteLine(GetTextFromFocusedControl());
-                
+                refresh();
                 Console.WriteLine("process.getWindow: "+pointer);
                 Console.WriteLine("process.getProcess: "+check.Id);
                 
@@ -134,7 +139,45 @@ static class Program
             aProcess.Kill();
         }
     }
+    public static void refresh(){
+        Process [] processes = Process.GetProcessesByName("iexplore");
 
+            foreach(Process proc in processes)
+            {
+                SetForegroundWindow(proc.MainWindowHandle);
+                SendKeys.SendWait("{F5}");
+            }
+
+    }
+
+[DllImport("user32.dll", SetLastError = true)]
+static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
+public static void PressKey(Keys key, bool up) {
+    const int KEYEVENTF_EXTENDEDKEY = 0x1;
+    const int KEYEVENTF_KEYUP = 0x2;
+    if (up) {
+        keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, (UIntPtr) 0);
+    }
+    else {
+        keybd_event((byte) key, 0x45, KEYEVENTF_EXTENDEDKEY, (UIntPtr) 0);
+    }
+}
+
+void TestProc() {
+    PressKey(Keys.ControlKey, false);
+    PressKey(Keys.P, false);
+    PressKey(Keys.P, true);
+    PressKey(Keys.ControlKey, true);
+}
+    public static void copy(){
+        Process [] processes = Process.GetProcessesByName("iexplore");
+
+            foreach(Process proc in processes)
+            {
+                SetForegroundWindow(proc.MainWindowHandle);
+                SendKeys.SendWait("{F5}");
+            }
+    }
     public static void CopyFromEditor(){
        
     }   
