@@ -14,19 +14,8 @@ static class Program
     [DllImport("user32.dll")]
     public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint pdwProcessId);
 
-    [DllImport("user32.dll", EntryPoint = "SendMessageW")]  
-    public static extern int SendMessageW([InAttribute] System.IntPtr hWnd, int Msg, int wParam, IntPtr lParam);  
-    public const int WM_GETTEXT = 13;  
-    
-    [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]  
-    internal static extern IntPtr GetFocus();
     [DllImport("user32.dll")]
     public static extern int SetForegroundWindow(IntPtr hWnd);
-
-    [DllImport("user32", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]  
-    internal static extern int AttachThreadInput(int idAttach, int idAttachTo, bool fAttach);  
-    [DllImport("kernel32.dll")]  
-    internal static extern int GetCurrentThreadId();  
 
     [DllImport("user32.dll")]
     public static extern IntPtr GetForegroundWindow();
@@ -112,7 +101,7 @@ static class Program
     /// e.g if you had 5 instances of chrome open it would delete them all
     /// </summary>
     /// <param name="processName"></param>
-    public static void Stop(String processName){
+    public static void StopExact(String processName){
         Process[] process = Process.GetProcessesByName(processName);
         foreach(Process aProcess in process){
             aProcess.Kill();
@@ -237,35 +226,5 @@ static class Program
         }
         SendKeys.SendWait("^y");
     }
-
-    /* private static string GetTextFromFocusedControl()  
-    {  
-      try  
-      {  
-        int activeWinPtr = GetForegroundWindow().ToInt32();  
-        uint activeThreadId = 0, processId;  
-        activeThreadId = GetWindowThreadProcessId(activeWinPtr, out processId);  
-        int currentThreadId = GetCurrentThreadId();  
-        if (activeThreadId != currentThreadId)  
-        AttachThreadInput((int)activeThreadId, currentThreadId, true);  
-        IntPtr activeCtrlId = GetFocus();  
-  
-        return GetText(activeCtrlId);  
-      }  
-      catch (Exception exp)  
-      {  
-        return exp.Message;  
-      }  
-    }  
-    private static string GetText(IntPtr handle)  
-    {  
-      int maxLength = 100;  
-      IntPtr buffer = Marshal.AllocHGlobal((maxLength + 1) * 2);  
-      SendMessageW(handle, WM_GETTEXT, maxLength, buffer);  
-      String w = Marshal.PtrToStringUni(buffer);  
-      Marshal.FreeHGlobal(buffer);  
-      return w;  
-    }  */
-     
 }
 
