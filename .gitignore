@@ -14,6 +14,7 @@ nlp/stt/*.so
 nlp/stt/linux-x64
 nlp/stt/catalyst*
 nlp/stt/nlp.pdb
+nlp/stt/nlp
 nlp/stt/*.txt
 Valet/Valet_Dashboard/bin
 Valet/Valet_Dashboard/obj
