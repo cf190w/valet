@@ -9,12 +9,11 @@ shortCuts/bin
 shortCuts/obj
 python_stt/vosk-*
 .vs/
-nlp/stt/nlp
+nlp/stt/vosk-model*
 nlp/stt/*.so
 nlp/stt/linux-x64
+nlp/stt/catalyst*
 nlp/stt/nlp.pdb
-nlp/stt/vosk*
-nlp/stt/sttlog.txt
 nlp/stt/*.txt
 Valet/Valet_Dashboard/bin
 Valet/Valet_Dashboard/obj
