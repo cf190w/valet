@@ -244,8 +244,16 @@ public class Program
     /// <summary>
     /// Function for the word Undo to be called
     /// </summary>
-<<<<<<< HEAD
->>>>>>> 43e8e0fc3e93e6f65ce5a6c4501af31ba646f475
+    public static void openApplicationFunction ()
+    {
+      Console.WriteLine("Open");
+    }
+    public static void wordUndo()
+    {
+      ShortCuts.undo();
+      Console.WriteLine("Undo");
+    }
+
     /// <summary>
     /// Function to be called to start any given process using the name of the name of the process
     /// </summary>
