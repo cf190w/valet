@@ -67,64 +67,87 @@ public class Program
         int numNouns = nounCount(doc);
         Console.WriteLine($"The document contains {numNouns} nouns.");
 
-        //Checking the input for specific words
+       //Checking the input for specific words
         // Check if the 'input' string contains the word "copy" 
         if (doc.Value.Contains("copy"))
         {
-            // If it does, call the 'wordCopyFunction' function
-            wordCopyFunction();
+            // If it does, call the 'wordCopy' function
+            wordCopy();
         }
         // Check if the 'input' string contains the word "paste"
         else if (doc.Value.Contains("paste"))
         {
-            // If it does, call the 'wordPasteFunction' function
-            wordPasteFunction();
+            // If it does, call the 'wordPaste' function
+            wordPaste();
         }
         // Check if the 'input' string contains the word "close"
         else if (doc.Value.Contains("close"))
         {
-            // If it does, call the 'closeApplicationFunction' function
-            closeApplicationFunction();
+            // If it does, call the 'wordCloseTab' function
+            wordCloseTab();
         }
-        else if (doc.Value.Contains("open"))
+        // Check if the 'input' string contains the word "undo"
+        else if (doc.Value.Contains("undo"))
         {
-            // If it does, call the 'openApplicationFunction' function
-            openApplicationFunction();
+            // If it does, call the 'wordUndo' function
+            wordUndo();
         }
+        // Check if the 'input' string contains the word "start"
         else if(doc.Value.Contains("start"))
         {
-            // If it does, call the 'startProcessFunction' function
-            startProcessFunction();
+            // If it does, call the 'wordStart' function
+            wordStart();
         }
-        else if(doc.Value.Contains("stop"))
+        // Check if the 'input' string contains the word "redo"
+        else if(doc.Value.Contains("redo"))
         {
-            // If it does, call the 'stopProcessFunction' function
-            stopProcessFunction();
+            // If it does, call the 'wordRedo' function
+            wordRedo();
         }
-        else if(doc.Value.Contains("kill"))
-        {
-            // If it does, call the 'killProcessFunction' function
-            killProcessFunction();
-        }
+        // Check if the 'input' string contains the word "refresh"
         else if(doc.Value.Contains("refresh"))
         {
-            // If it does, call the 'refreshPageFunction' function
-            refreshPageFunction();
+            // If it does, call the 'wordRefreshBrowser' function
+            wordRefreshBrowser();
         }
-        else if(doc.Value.Contains("editor"))
+// Check if the 'input' string contains the word "stop"
+        else if(doc.Value.Contains("close"))
         {
-            // If it does, call the 'copyFromEditorFunction' function
-            copyFromEditorFunction();
-        }
-        else if (doc.Value.Contains("focused") && doc.Value.Contains("control"))
-        {
-            // If it does, call the 'getFocusedControlFunction' function
-            getFocusedControlFunction();
-        }
-        else if (doc.Value.Contains("get") && doc.Value.Contains("text"))
-        {
-            // If it does, call the 'getTextFunction' function
-            getTextFunction();
+            // Check if the 'input' string contains the word "chrome"
+            if(doc.Value.Contains("chrome"))
+            {
+                // If it does, call the 'wordStopExact' function
+                wordCloseExact();
+            }
+            // Check if the 'input' string contains the word "opera"
+            else if (doc.Value.Contains("opera"))
+            {
+                // If it does, call the 'wordStopActive' function
+                wordCloseExact();
+            }
+            // Check if the 'input' string contains the word "edge"
+            else if (doc.Value.Contains("edge"))
+            {
+                // If it does, call the 'wordStopActive' function
+                wordCloseExact();
+            }
+            // Check if the 'input' string contains the word "firefox"
+            else if (doc.Value.Contains("firefox"))
+            {
+                // If it does, call the 'wordStopActive' function
+                wordCloseExact();
+            }
+            // Check if the 'input' string contains the word "explorer"
+            else if (doc.Value.Contains("explorer"))
+            {
+                // If it does, call the 'wordStopActive' function
+                wordCloseExact();
+            }
+            else 
+            {
+                // If it only contains "exact", call the 'wordStopActive' function
+                wordCloseActive();
+            }
         }
         else
         {
@@ -184,93 +207,86 @@ public class Program
         // Return the count of nouns
         return nounCount;
     }
-
     /// <summary>
     /// Function for the word copy to be called and copies highlighted text
     /// </summary>
-    public static void wordCopyFunction()
+    public static void wordCopy()
     {
+        ShortCuts.copy();
         Console.WriteLine("Copy");
     }
 
     /// <summary>
     /// Function for the word paste to be called 
     /// </summary>
-    public static void wordPasteFunction ()
+    public static void wordPaste()
     {
+        ShortCuts.paste();
         Console.WriteLine("Paste");
     }
 
     /// <summary>
     /// Function for the word close to be called 
     /// </summary>
-    public static void closeApplicationFunction ()
+    public static void wordCloseTab()
     {
+        ShortCuts.closeTab();
         Console.WriteLine("Close");
     }
 
     /// <summary>
-    /// Function for the word open to be called
+    /// Function for the word Undo to be called
     /// </summary>
-    public static void openApplicationFunction ()
+    public static void wordUndo()
     {
-        Console.WriteLine("Open");
+        ShortCuts.undo();
+        Console.WriteLine("Undo");
     }
 
     /// <summary>
     /// Function to be called to start any given process using the name of the name of the process
     /// </summary>
-    public static void startProcessFunction ()
-    {
+    public static void wordStart()
+    { 
+        //ShortCuts.Start()   takes String argument
         Console.WriteLine("Start");
     }
 
     /// <summary>
-    /// Function to be called to stop all process with this name
-    /// e.g if you had 5 instances of chrome open it would delete them all
+    /// Function to be called redo the last change
     /// </summary>
-    public static void stopProcessFunction ()
+    public static void wordRedo ()
     {
-        Console.WriteLine("Stop");
+        ShortCuts.redo();
+        Console.WriteLine("redo");
     }
 
     /// <summary>
-    /// Function to be called to stop or kill the currently active or foreground process on your system
+    /// Function to be called to refresh a browser tab
     /// </summary>
-    public static void killProcessFunction ()
+    public static void wordRefreshBrowser ()
     {
-        Console.WriteLine("Kill");
-    }
-
-    /// <summary>
-    /// Function to be called to refresh a page
-    /// </summary>
-    public static void refreshPageFunction ()
-    {
+        ShortCuts.refreshBrowserTab();
         Console.WriteLine("Refresh");
     }
 
     /// <summary>
-    /// Function to be called to copy from editor
+    /// Function to be called to stop a process that is currently running
     /// </summary>
-    public static void copyFromEditorFunction ()
+    public static void wordCloseExact ()
     {
-        Console.WriteLine("Copy from Editor");
+        //ShortCuts.StopExact();    takes string argument
+        Console.WriteLine("Close Exact");
     }
 
     /// <summary>
-    /// Function to be called to get focused control
+    /// Function to be called to stop the active process
     /// </summary>
-    public static void getFocusedControlFunction ()
+    public static void wordCloseActive ()
     {
-        Console.WriteLine("Get Focused Control");
+        ShortCuts.StopActive();
+        Console.WriteLine("Close Active");
     }
 
-    /// <summary>
-    /// Function to be called to get text
-    /// </summary>
-    public static void getTextFunction ()
-    {
-        Console.WriteLine("Get Text");
-    }
+    
 }

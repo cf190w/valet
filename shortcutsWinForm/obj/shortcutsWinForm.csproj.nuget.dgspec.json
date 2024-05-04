@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leths\\Documents\\Uni\\Group Git\\shortcutsWinForm\\shortcutsWinForm.csproj": {}
+    "C:\\Users\\JKopp\\Desktop\\javacode\\compx-241\\smoke and mirrors\\valet\\shortcutsWinForm\\shortcutsWinForm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leths\\Documents\\Uni\\Group Git\\shortcutsWinForm\\shortcutsWinForm.csproj": {
+    "C:\\Users\\JKopp\\Desktop\\javacode\\compx-241\\smoke and mirrors\\valet\\shortcutsWinForm\\shortcutsWinForm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leths\\Documents\\Uni\\Group Git\\shortcutsWinForm\\shortcutsWinForm.csproj",
+        "projectUniqueName": "C:\\Users\\JKopp\\Desktop\\javacode\\compx-241\\smoke and mirrors\\valet\\shortcutsWinForm\\shortcutsWinForm.csproj",
         "projectName": "shortcutsWinForm",
-        "projectPath": "C:\\Users\\leths\\Documents\\Uni\\Group Git\\shortcutsWinForm\\shortcutsWinForm.csproj",
-        "packagesPath": "C:\\Users\\leths\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leths\\Documents\\Uni\\Group Git\\shortcutsWinForm\\obj\\",
+        "projectPath": "C:\\Users\\JKopp\\Desktop\\javacode\\compx-241\\smoke and mirrors\\valet\\shortcutsWinForm\\shortcutsWinForm.csproj",
+        "packagesPath": "C:\\Users\\JKopp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JKopp\\Desktop\\javacode\\compx-241\\smoke and mirrors\\valet\\shortcutsWinForm\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\leths\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\JKopp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -62,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
