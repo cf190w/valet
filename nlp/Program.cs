@@ -21,23 +21,26 @@ public class Program
         pythonProcess.StartInfo.RedirectStandardOutput = true;
 
         pythonProcess.Start();
-        string previousOutput = string.Empty;
-
-        while (!pythonProcess.HasExited)
+        while (!pythonProcess.StandardOutput.EndOfStream)
         {
-            string currentOutput = pythonProcess.StandardOutput.ReadToEnd();
-            
-            if (!string.IsNullOrEmpty(currentOutput))
+            string currentOutput = pythonProcess.StandardOutput.ReadLine();
+
+            // Process the current output
+            // ...
+
+            // Check if the 'currentOutput' string contains the word "copy" 
+            if (currentOutput.Contains("copy"))
             {
-                if (currentOutput.EndsWith('\n'))
-                {
-                    Console.Write(currentOutput);
-                }
-                else
-                {
-                    previousOutput += currentOutput;
-                }
+                // If it does, call the 'wordCopyFunction' function
+                wordCopyFunction();
             }
+            // Check if the 'currentOutput' string contains the word "paste"
+            else if (currentOutput.Contains("paste"))
+            {
+                // If it does, call the 'wordPasteFunction' function
+                wordPasteFunction();
+            }
+            // ... Add other word checks accordingly
         }
 
         //Register the English language model
@@ -213,10 +216,7 @@ public class Program
     /// Function for the word open to be called
     /// </summary>
     public static void openApplicationFunction ()
-    {
-        Console.WriteLine("Open");
-    }
-
+    { Console.WriteLine("Open"); }
     /// <summary>
     /// Function to be called to start any given process using the name of the name of the process
     /// </summary>
