@@ -31,16 +31,20 @@ public class Program
             // Check if the 'currentOutput' string contains the word "copy" 
             if (currentOutput.Contains("copy"))
             {
-                // If it does, call the 'wordCopyFunction' function
-                wordCopyFunction();
+              Console.WriteLine("copy was said (hello from c#)");
             }
-            // Check if the 'currentOutput' string contains the word "paste"
             else if (currentOutput.Contains("paste"))
             {
-                // If it does, call the 'wordPasteFunction' function
-                wordPasteFunction();
+              Console.WriteLine("paste was said (hello from c#)");
             }
-            // ... Add other word checks accordingly
+            else if (currentOutput.Contains("refresh"))
+            {
+              Console.WriteLine("refresh was said (hello from c#)");
+            }
+            else if (currentOutput.Contains("close"))
+            {
+              Console.WriteLine("close was said (hello from c#)");
+            }
         }
 
         //Register the English language model

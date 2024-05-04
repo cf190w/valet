@@ -34,4 +34,4 @@ while True:
         result = json.loads(recognizer.Result())
         text = result["text"]
         print(text)
-        sys.stdout.flush()  # Flush the output to ensure it is sent immediately
+        sys.stdout.flush()
