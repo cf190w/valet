@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-static class Program
+public static class ShortCuts
 {
     [DllImport("user32.dll")]
     public static extern IntPtr WindowFromPoint(Point point);

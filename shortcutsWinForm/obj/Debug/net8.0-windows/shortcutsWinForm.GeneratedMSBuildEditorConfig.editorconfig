@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = shortcutsWinForm
-build_property.ProjectDir = C:\Users\leths\Documents\Uni\Group Git\shortcutsWinForm\
+build_property.ProjectDir = C:\Users\JKopp\Desktop\javacode\compx-241\smoke and mirrors\valet\shortcutsWinForm\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

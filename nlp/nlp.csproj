@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <OutputPath>stt</OutputPath>
@@ -13,6 +13,7 @@
     <SelfContained>true</SelfContained>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    <ValidateExecutableReferencesMatchSelfContained>false</ValidateExecutableReferencesMatchSelfContained>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
@@ -27,6 +28,10 @@
     <PackageReference Include="Catalyst" Version="1.0.44557" />
     <PackageReference Include="Catalyst.Models.English" Version="1.0.30952" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\shortCuts\shortCuts.csproj" />
   </ItemGroup>
  
 </Project>
