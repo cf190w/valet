@@ -12,6 +12,7 @@ python_stt/vosk-*
 nlp/stt/vosk-model*
 nlp/stt/*.so
 nlp/stt/linux-x64
+nlp/stt/win-x64
 nlp/stt/catalyst*
 nlp/stt/nlp.pdb
 nlp/stt/nlp

@@ -290,6 +290,4 @@ public class Program
         ShortCuts.StopActive();
         Console.WriteLine("Close Active");
     }
-
-    
 }
