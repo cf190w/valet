@@ -16,7 +16,7 @@ public class Program
         Console.WriteLine("Running C# Program");
         Process pythonProcess = new Process();
         pythonProcess.StartInfo.FileName = "python";
-        pythonProcess.StartInfo.Arguments = "vosk_stt.py";
+        pythonProcess.StartInfo.Arguments = @"C:\Users\cd\valet\nlp\stt\vosk_stt.py";
         pythonProcess.StartInfo.UseShellExecute = false;
         pythonProcess.StartInfo.RedirectStandardOutput = true;
 

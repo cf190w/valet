@@ -9,8 +9,6 @@ import sys
 
 #Load the vosk model
 model_path = "vosk-model-en-us-0.22"
-vosk.SetLogLevel(-1)
-logging.getLogger('pyaudio').setLevel(logging.WARNING)
 model_path = os.path.expanduser(model_path)
 if not os.path.exists(model_path):
     print(f"Model path {model_path} does not exist.")
@@ -34,4 +32,4 @@ while True:
         result = json.loads(recognizer.Result())
         text = result["text"]
         print(text)
-        sys.stdout.flush()
+        sys.stdout.flush()  #write to stdout
