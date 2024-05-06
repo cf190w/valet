@@ -9,10 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shortCuts", "shortCuts\shor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shortcutsWinForm", "shortcutsWinForm\shortcutsWinForm.csproj", "{84309B40-A0D2-4086-BB45-384DA1DC7BAC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stt", "stt\stt.csproj", "{1DED5F89-42D5-46F2-8437-9A6A6EF345D8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vosk_stt", "vosk_stt\vosk_stt.csproj", "{70B80182-9CE2-40BD-925B-AF4364863075}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -167,8 +167,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button_Launch);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dictionary1);
-            this.Controls.Add(this.settings1);
+            //this.Controls.Add(this.dictionary1);
+            //this.Controls.Add(this.settings1);
             this.Controls.Add(this.dashBoard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
