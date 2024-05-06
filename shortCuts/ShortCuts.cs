@@ -29,7 +29,7 @@ public static class ShortCuts
         if(p.MainModule != null){
             return p.MainModule.FileName;
         }
-        return null;
+        return "";
     }
 
     public static Process GetForegroundProcess(){
