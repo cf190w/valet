@@ -24,9 +24,9 @@ public class Program
         while (!pythonProcess.StandardOutput.EndOfStream)
         {
             string currentOutput = pythonProcess.StandardOutput.ReadLine();
+            Console.WriteLine(currentOutput);
 
             // Process the current output
-            // ...
 
             // Check if the 'currentOutput' string contains the word "copy" 
             if (currentOutput.Contains("copy"))
