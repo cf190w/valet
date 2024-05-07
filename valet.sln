@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shortCuts", "shortCuts\shor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shortcutsWinForm", "shortcutsWinForm\shortcutsWinForm.csproj", "{84309B40-A0D2-4086-BB45-384DA1DC7BAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valet_UI", "Valet_UI\Valet_UI.csproj", "{FCAA4BDE-E5F0-4F29-B170-BDB938C82F03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,14 +29,10 @@ Global
 		{84309B40-A0D2-4086-BB45-384DA1DC7BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84309B40-A0D2-4086-BB45-384DA1DC7BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84309B40-A0D2-4086-BB45-384DA1DC7BAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1DED5F89-42D5-46F2-8437-9A6A6EF345D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DED5F89-42D5-46F2-8437-9A6A6EF345D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DED5F89-42D5-46F2-8437-9A6A6EF345D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1DED5F89-42D5-46F2-8437-9A6A6EF345D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70B80182-9CE2-40BD-925B-AF4364863075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70B80182-9CE2-40BD-925B-AF4364863075}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70B80182-9CE2-40BD-925B-AF4364863075}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70B80182-9CE2-40BD-925B-AF4364863075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCAA4BDE-E5F0-4F29-B170-BDB938C82F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAA4BDE-E5F0-4F29-B170-BDB938C82F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAA4BDE-E5F0-4F29-B170-BDB938C82F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAA4BDE-E5F0-4F29-B170-BDB938C82F03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
