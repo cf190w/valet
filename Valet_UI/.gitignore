@@ -1,2 +1,7 @@
 bin/
 obj/
+stt/*.dll
+stt/*.exe
+stt/*.pdb
+stt/*.json
+stt/runtimes
