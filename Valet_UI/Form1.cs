@@ -1,7 +1,16 @@
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Catalyst;
+using Catalyst.Models;
+using Mosaik.Core;
+using Newtonsoft.Json;
+
 namespace Valet_UI
 {
     public partial class Form1 : Form
     {
+        private bool isFirstTime = false;
         public Form1()
         {
             InitializeComponent();
@@ -79,6 +88,22 @@ namespace Valet_UI
 
             this.Hide();
 
+            if (!isFirstTime)
+            {
+                Console.WriteLine("Starting Python Speech to text");
+                Process pythonProcess = new Process();
+                pythonProcess.StartInfo.FileName = "python";
+                pythonProcess.StartInfo.Arguments = @"C:\Users\cd\valet\Valet_UI\stt\vosk_stt.py";
+                pythonProcess.StartInfo.UseShellExecute = false;
+                pythonProcess.StartInfo.RedirectStandardOutput = true;
+                pythonProcess.Start();
+                while(!pythonProcess.StandardOutput.EndOfStream)
+                {
+                    string currentOutput = pythonProcess.StandardOutput.ReadLine();
+                    Console.WriteLine(currentOutput);
+
+                }
+            }
             FloatingWindow floatingWindow = new FloatingWindow();
             //gets the working area of the users screen
             System.Drawing.Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
