@@ -11,6 +11,8 @@ namespace Valet_UI
     public partial class Form1 : Form
     {
         private bool isFirstTime = false;
+        private Process pythonProcess;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +33,6 @@ namespace Valet_UI
             dictionary1.Visible = false;
             settings1.Visible = false;
             dashboard1.Visible = true;
-
         }
 
         /// <summary>
@@ -105,34 +106,34 @@ namespace Valet_UI
             {
                 isFirstTime = true;
                 //toggle so this runs once, spawning the python subprocess which will run in the background/foreground
-                Console.WriteLine("Starting Python Speech to text");
-                Process pythonProcess = new Process();
+                pythonProcess = new Process();
                 pythonProcess.StartInfo.FileName = "python";
                 pythonProcess.StartInfo.Arguments = @"C:\Users\cd\valet\Valet_UI\stt\vosk_stt.py";
                 pythonProcess.StartInfo.UseShellExecute = false;
                 pythonProcess.StartInfo.RedirectStandardOutput = true;
+                pythonProcess.StartInfo.CreateNoWindow = true;
                 pythonProcess.Start();
-                /*
-                pythonProcess.OutputDataReceived += (sender, e) =>
+                Debug.WriteLine("started");
+                while (!pythonProcess.StandardOutput.EndOfStream)
                 {
-                    if (e.Data != null && string.IsNullOrWhiteSpace(e.Data)) // Replace "your_string" with the desired string
-                    {
-                        Console.WriteLine(e.Data);
-                        // String received, resume execution
-                    }
-                };
-                */
-                while (!pythonProcess.StandardOutput.EndOfStream) { 
                     string currentOutput = pythonProcess.StandardOutput.ReadLine();
+                    Debug.WriteLine(currentOutput);
                     floatingWindow.changeText("listening...");
-                    if (currentOutput.Contains("listening"))
-                    {
-                        floatingWindow.changeText(currentOutput);
-
-                    }
-                    Console.WriteLine(currentOutput);
                 }
+            }
+        }
 
+        /// <summary>
+        /// Upon closing the main form, kill the subprocess otherwise cannot build the project
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Terminate the subprcess if it still running
+            if (pythonProcess != null && !pythonProcess.HasExited)
+            {
+                pythonProcess.Kill();
             }
         }
     }
