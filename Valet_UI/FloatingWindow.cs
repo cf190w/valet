@@ -46,5 +46,9 @@ namespace Valet_UI
             form1.ShowDialog();
 
         }
+        public void changeText(string newText)
+        {
+            label_userSpeach.Text = newText;
+        }
     }
 }
