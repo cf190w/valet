@@ -29,27 +29,40 @@ public class Program
             // Process the current output
 
             // Check if the 'currentOutput' string contains the word "copy" 
-            if (currentOutput.Contains("copy"))
-            {
-              Console.WriteLine("copy was said (hello from c#)");
-            }
-            else if (currentOutput.Contains("paste"))
-            {
-              Console.WriteLine("paste was said (hello from c#)");
-            }
-            else if (currentOutput.Contains("refresh"))
-            {
-              Console.WriteLine("refresh was said (hello from c#)");
-            }
-            else if (currentOutput.Contains("close"))
-            {
-              Console.WriteLine("close was said (hello from c#)");
-            }
+
+		if (currentOutput.Contains("copy"))
+		{
+		    // If it does, call the 'wordCopy' function
+		    Console.WriteLine("copy was said (hello from c#)");
+		    wordCopy();
+		}
+		// Check if the 'input' string contains the word "paste"
+		else if (currentOutput.Contains("paste"))
+		{
+		    // If it does, call the 'wordPaste' function
+		    Console.WriteLine("paste was said (hello from c#)");
+		    wordPaste();
+		}
+		// Check if the 'input' string contains the word "close"
+		else if (currentOutput.Contains("close"))
+		{
+		    // If it does, call the 'wordCloseTab' function
+		    Console.WriteLine("close was said (hello from c#)");
+		    wordCloseTab();
+		}
+		// Check if the 'input' string contains the word "undo"
+		else if (currentOutput.Contains("undo"))
+		{
+		    Console.WriteLine("undo was said (hello from c#)");
+			wordUndo();
+
+		}
         }
 
         //Register the English language model
         Catalyst.Models.English.Register(); //You need to pre-register each language (and install the respective NuGet Packages)
-        // Configure storage
+	wordCloseActive();
+	// Configure storage
         Storage.Current = new DiskStorage("catalyst-models");
         // Create a Catalyst NLP pipeline for English
         var nlp = await Pipeline.ForAsync(Language.English);
@@ -75,77 +88,77 @@ public class Program
         Console.WriteLine($"The document contains {numNouns} nouns.");
 
        //Checking the input for specific words
-        // Check if the 'input' string contains the word "copy" 
-        if (doc.Value.Contains("copy"))
+        /* Check if the 'input' string contains the word "copy" 
+        if (currentOutput.Contains("copy"))
         {
             // If it does, call the 'wordCopy' function
             wordCopy();
         }
         // Check if the 'input' string contains the word "paste"
-        else if (doc.Value.Contains("paste"))
+        else if (currentOutput.Contains("paste"))
         {
             // If it does, call the 'wordPaste' function
             wordPaste();
         }
         // Check if the 'input' string contains the word "close"
-        else if (doc.Value.Contains("close"))
+        else if (currentOutput.Contains("close"))
         {
             // If it does, call the 'wordCloseTab' function
             wordCloseTab();
         }
         // Check if the 'input' string contains the word "undo"
-        else if (doc.Value.Contains("undo"))
+        else if (currentOutput.Contains("undo"))
         {
             // If it does, call the 'wordUndo' function
             wordUndo();
         }
         // Check if the 'input' string contains the word "start"
-        else if(doc.Value.Contains("start"))
+        else if(currentOutput.Contains("start"))
         {
             // If it does, call the 'wordStart' function
             wordStart();
         }
         // Check if the 'input' string contains the word "redo"
-        else if(doc.Value.Contains("redo"))
+        else if(currentOutput.Contains("redo"))
         {
             // If it does, call the 'wordRedo' function
             wordRedo();
         }
         // Check if the 'input' string contains the word "refresh"
-        else if(doc.Value.Contains("refresh"))
+        else if(currentOutput.Contains("refresh"))
         {
             // If it does, call the 'wordRefreshBrowser' function
             wordRefreshBrowser();
         }
 // Check if the 'input' string contains the word "stop"
-        else if(doc.Value.Contains("close"))
+        else if(currentOutput.Contains("close"))
         {
             // Check if the 'input' string contains the word "chrome"
-            if(doc.Value.Contains("chrome"))
+            if(currentOutput.Contains("chrome"))
             {
                 // If it does, call the 'wordStopExact' function
                 wordCloseExact();
             }
             // Check if the 'input' string contains the word "opera"
-            else if (doc.Value.Contains("opera"))
+            else if (currentOutput.Contains("opera"))
             {
                 // If it does, call the 'wordStopActive' function
                 wordCloseExact();
             }
             // Check if the 'input' string contains the word "edge"
-            else if (doc.Value.Contains("edge"))
+            else if (currentOutput.Contains("edge"))
             {
                 // If it does, call the 'wordStopActive' function
                 wordCloseExact();
             }
             // Check if the 'input' string contains the word "firefox"
-            else if (doc.Value.Contains("firefox"))
+            else if (currentOutput.Contains("firefox"))
             {
                 // If it does, call the 'wordStopActive' function
                 wordCloseExact();
             }
             // Check if the 'input' string contains the word "explorer"
-            else if (doc.Value.Contains("explorer"))
+            else if (currentOutput.Contains("explorer"))
             {
                 // If it does, call the 'wordStopActive' function
                 wordCloseExact();
@@ -161,6 +174,7 @@ public class Program
             // If the 'input' string doesn't contain any of the above words, print an error message
             Console.WriteLine("Invalid input. Please try again.");
         }
+	*/
     }
 
     /// <summary>

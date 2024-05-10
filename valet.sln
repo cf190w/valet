@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shortCuts", "shortCuts\shor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shortcutsWinForm", "shortcutsWinForm\shortcutsWinForm.csproj", "{84309B40-A0D2-4086-BB45-384DA1DC7BAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Valet_UI", "Valet_UI\Valet_UI.csproj", "{FCAA4BDE-E5F0-4F29-B170-BDB938C82F03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Valet_UI", "Valet_UI\Valet_UI.csproj", "{FCAA4BDE-E5F0-4F29-B170-BDB938C82F03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -142,6 +142,23 @@ namespace Valet_UI
                 {
                     floatingWindow.changeText(currentOutput);
                 });
+                if (currentOutput.Contains("copy"))
+                {
+                    Console.WriteLine("copy was said (hello from c#)");
+                    ShortCuts.copy();
+                }
+                else if (currentOutput.Contains("paste"))
+                {
+                    Console.WriteLine("paste was said (hello from c#)");
+                }
+                else if (currentOutput.Contains("refresh"))
+                {
+                    Console.WriteLine("refresh was said (hello from c#)");
+                }
+                else if (currentOutput.Contains("close"))
+                {
+                    Console.WriteLine("close was said (hello from c#)");
+                }   
             }
             isReadingOutput = false;
 

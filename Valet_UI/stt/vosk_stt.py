@@ -8,7 +8,7 @@ import logging
 import sys
 
 #Load the vosk model
-model_path = "vosk-model-en-us-0.22"
+model_path = "vosk-model-small-en-us-0.15"
 model_path = os.path.expanduser(model_path)
 if not os.path.exists(model_path):
     print(f"Model path {model_path} does not exist.")
