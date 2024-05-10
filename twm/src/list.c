@@ -208,3 +208,15 @@ FreeList(name_list ** list)
     }
     *list = NULL;
 }
+
+
+/** Print out the names of the all currently present windows
+* given a pointer to a Screen struct
+*/
+void PrintWindowNames(struct TwmWindow window) {
+  struct TwmWindow *current = &window;
+    while (current != NULL) {
+      printf("Am i cooked? \n");
+      current = current->next;
+  }
+}

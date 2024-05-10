@@ -58,6 +58,7 @@ in this Software without prior written authorization from The Open Group.
  ***********************************************************************/
 
 #include "twm.h"
+#include "list.h"
 #include "util.h"
 #include "parse.h"
 #include "screen.h"
@@ -625,6 +626,8 @@ FindFontSet(MyFont *font, const char *fontname)
         twmMessage("created fontset with %d fonts (%d missing) for \"%s\"",
                    fnum, missing_charset_count_return,
                    fontname ? fontname : "NULL");
+        //Print out the state of all the windows here
+        PrintWindowNames(Scr->TwmRoot);
         return True;
     }
 
