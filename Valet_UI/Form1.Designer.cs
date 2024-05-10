@@ -172,6 +172,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
+            FormClosing += Form1_FormClosing;
             ResumeLayout(false);
         }
 

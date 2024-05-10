@@ -46,7 +46,8 @@ public static class ShortCuts
         Console.WriteLine(ptCursor);
         return WindowFromPoint(ptCursor);
     }
-
+	
+    /*
     public static void Main(string[] args)
     {
         try{
@@ -86,6 +87,7 @@ public static class ShortCuts
         }
         
     }
+    */
 
     /// <summary>
     /// starts any given process using the name of the name of the process
@@ -182,6 +184,9 @@ public static class ShortCuts
         if(fgproc.ProcessName.Contains("Terminal") || fgproc.ProcessName == "cmd" || fgproc.ProcessName == "powershell"){
             Console.WriteLine("copying");
         }
+	else if (fgproc.ProcessName == Process.GetCurrentProcess().ProcessName) {
+	   Console.WriteLine("Current process is the windows form app itself");
+	}
         else{
             SendKeys.SendWait("^c");
         }
