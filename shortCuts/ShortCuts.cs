@@ -179,7 +179,12 @@ public static class ShortCuts
             SetForegroundWindow(proc.MainWindowHandle);
             
         }
-        SendKeys.SendWait("^c");
+        if(fgproc.ProcessName.Contains("Terminal") || fgproc.ProcessName == "cmd" || fgproc.ProcessName == "powershell"){
+            Console.WriteLine("copying");
+        }
+        else{
+            SendKeys.SendWait("^c");
+        }
     }
     
     /// <summary>
@@ -226,5 +231,7 @@ public static class ShortCuts
         }
         SendKeys.SendWait("^y");
     }
+
+
 }
 
