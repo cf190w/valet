@@ -46,7 +46,8 @@ public static class ShortCuts
         Console.WriteLine(ptCursor);
         return WindowFromPoint(ptCursor);
     }
-
+	
+    /*
     public static void Main(string[] args)
     {
         try{
@@ -86,6 +87,7 @@ public static class ShortCuts
         }
         
     }
+    */
 
     /// <summary>
     /// starts any given process using the name of the name of the process
