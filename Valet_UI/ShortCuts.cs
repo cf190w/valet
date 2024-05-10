@@ -179,7 +179,15 @@ public static class ShortCuts
             SetForegroundWindow(proc.MainWindowHandle);
             
         }
-        SendKeys.SendWait("^c");
+        if(fgproc.ProcessName.Contains("Terminal") || fgproc.ProcessName == "cmd" || fgproc.ProcessName == "powershell"){
+            Console.WriteLine("copying");
+        }
+	else if (fgproc.ProcessName == Process.GetCurrentProcess().ProcessName) {
+	   Console.WriteLine("Current process is the windows form app itself");
+	}
+        else{
+            SendKeys.SendWait("^c");
+        }
     }
     
     /// <summary>
@@ -226,5 +234,7 @@ public static class ShortCuts
         }
         SendKeys.SendWait("^y");
     }
+
+
 }
 
