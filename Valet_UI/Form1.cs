@@ -1,5 +1,8 @@
 using System;
 using System.Diagnostics;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Catalyst;
 using Catalyst.Models;
@@ -107,24 +110,45 @@ namespace Valet_UI
                 isFirstTime = true;
                 //toggle so this runs once, spawning the python subprocess which will run in the background/foreground
                 pythonProcess = new Process();
+                // Specify the working directory for the Python process
+                string baseDirectory = (AppDomain.CurrentDomain.BaseDirectory);
+                string workingDirectory = Path.Combine(baseDirectory);
+                pythonProcess.StartInfo.WorkingDirectory = workingDirectory;
+                // Set the Python script file path relative to the working directory
+                string scriptPath = Path.Combine(workingDirectory, "vosk_stt.py");
+                // Set the arguments for the Python process
                 pythonProcess.StartInfo.FileName = "python";
-                pythonProcess.StartInfo.Arguments = @"C:\Users\cd\valet\Valet_UI\stt\vosk_stt.py";
+                pythonProcess.StartInfo.Arguments = scriptPath;
+                // Rest of your code...
                 pythonProcess.StartInfo.UseShellExecute = false;
                 pythonProcess.StartInfo.RedirectStandardOutput = true;
                 pythonProcess.StartInfo.CreateNoWindow = true;
                 pythonProcess.Start();
+                Thread outputThread = new Thread(() => readOutput(floatingWindow));
+                outputThread.Start();
                 Debug.WriteLine("started");
-                while (!pythonProcess.StandardOutput.EndOfStream)
-                {
-                    string currentOutput = pythonProcess.StandardOutput.ReadLine();
-                    Debug.WriteLine(currentOutput);
-                    floatingWindow.changeText("listening...");
-                }
             }
         }
 
+        private void readOutput(FloatingWindow floatingWindow)
+        {
+            bool isReadingOutput = true;
+            while (!pythonProcess.StandardOutput.EndOfStream)
+            {
+                string currentOutput = pythonProcess.StandardOutput.ReadLine();
+
+                // Update the UI using the main thread
+                Invoke((MethodInvoker)delegate
+                {
+                    floatingWindow.changeText(currentOutput);
+                });
+            }
+            isReadingOutput = false;
+
+        }
+
         /// <summary>
-        /// Upon closing the main form, kill the subprocess otherwise cannot build the project
+        /// Upon closing the main form, kill the subprocess otherwise cannot build the project again
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
