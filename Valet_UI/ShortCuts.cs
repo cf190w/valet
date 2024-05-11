@@ -47,48 +47,7 @@ public static class ShortCuts
         return WindowFromPoint(ptCursor);
     }
 	
-    /*
-    public static void Main(string[] args)
-    {
-        try{
-            uint pointer;
-            IntPtr processId;
-            String processName = "";
-
-
-            while(true){
-                Thread.Sleep(1000);
-                processId = GetWindowUnderCursor();
-                pointer = GetWindowThreadProcessId(processId, out pointer);
-                Process check = Process.GetCurrentProcess();
-                Process fgproc = GetForegroundProcess();
-                Console.WriteLine(fgproc.ProcessName);
-                //Process process = Process.GetProcessById(pointer);
-                //processName = process.ProcessName;
-                processName = GetActiveProcessFileName();
-                Console.WriteLine(processId);
-                Console.WriteLine(processName);
-                
-                //Console.WriteLine(GetTextFromFocusedControl());
-
-                Console.WriteLine("process.getWindow: "+pointer);
-                Console.WriteLine("process.getProcess: "+check.Id);
-                
-                
-                //Console.WriteLine(GetProcessesFileName(processId, out processName));
-                //Stop(fgproc.ProcessName);
-            }
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            String[] redo = new string[0];    
-            Main(redo);
-        }
-        
-    }
-    */
-
+    
     /// <summary>
     /// starts any given process using the name of the name of the process
     /// </summary>
@@ -118,9 +77,18 @@ public static class ShortCuts
     public static void StopActive(){
         Process fgproc = GetForegroundProcess();
         Process[] process = Process.GetProcessesByName(fgproc.ProcessName);
-        foreach(Process aProcess in process){
+        if(fgproc.ProcessName.Contains("Terminal") || fgproc.ProcessName == "cmd" || fgproc.ProcessName == "powershell"){
+            Console.WriteLine("copying");
+        }
+	    else if (fgproc.ProcessName == Process.GetCurrentProcess().ProcessName) {
+	        Debug.WriteLine("Current process is the windows form app itself");
+	    }
+        else {
+            foreach(Process aProcess in process){
             aProcess.Kill();
         }
+        }
+        
     }
         
     /// <summary>
