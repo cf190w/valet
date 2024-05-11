@@ -236,7 +236,5 @@ public static class ShortCuts
         }
         SendKeys.SendWait("^y");
     }
-
-
 }
 

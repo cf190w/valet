@@ -124,7 +124,7 @@ namespace Valet_UI
                 pythonProcess.StartInfo.RedirectStandardOutput = true;
                 pythonProcess.StartInfo.CreateNoWindow = true;
                 pythonProcess.Start();
-		//Start new thread to read asynchronously from stdout
+                //Start new thread to read asynchronously from stdout
                 Thread outputThread = new Thread(() => readOutput(floatingWindow));
                 outputThread.Start();
                 Debug.WriteLine("started");
@@ -165,7 +165,10 @@ namespace Valet_UI
                     else if (currentOutput.Contains("refresh"))
                     {
                         ShortCuts.refresh();
-
+                    }
+                    else if (currentOutput.Contains("redo"))
+                    {
+                        ShortCuts.redo();
                     }
                 }
             }
