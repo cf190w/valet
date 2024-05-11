@@ -627,7 +627,6 @@ FindFontSet(MyFont *font, const char *fontname)
                    fnum, missing_charset_count_return,
                    fontname ? fontname : "NULL");
         //Print out the state of all the windows here
-        PrintWindowNames(Scr->TwmRoot);
         return True;
     }
 

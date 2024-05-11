@@ -67,7 +67,7 @@ in this Software without prior written authorization from The Open Group.
 typedef struct name_list_struct name_list;
 
 extern void AddToList(name_list ** list_head, char *name, char *ptr);
-extern void PrintWindowNames(struct TwmWindow tmw_window);
+extern void PrintWindowNames(TwmWindow* tmw_window);
 extern void FreeList(name_list ** list);
 
 extern int GetColorFromList(name_list * list_head, const char *name,

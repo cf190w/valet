@@ -67,6 +67,7 @@ in this Software without prior written authorization from The Open Group.
 #include "resize.h"
 #include "parse.h"
 #include "util.h"
+#include "list.h"
 #include "screen.h"
 #include "icons.h"
 
@@ -345,6 +346,7 @@ void
 HandleEvents(XtAppContext appContext)
 {
     while (TRUE) {
+        PrintWindowNames(&(Scr->TwmRoot));
         if (enter_flag && !QLength(dpy)) {
             if (enter_win && enter_win != raise_win) {
                 AutoRaiseWindow(enter_win);     /* sets enter_flag T */
