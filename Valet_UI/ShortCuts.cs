@@ -185,9 +185,9 @@ public static class ShortCuts
             Console.WriteLine("copying");
         }
 	else if (fgproc.ProcessName == Process.GetCurrentProcess().ProcessName) {
-	   Console.WriteLine("Current process is the windows form app itself");
+	   Debug.WriteLine("Current process is the windows form app itself");
 	}
-        else{
+        else {
             SendKeys.SendWait("^c");
         }
     }

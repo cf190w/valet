@@ -124,6 +124,7 @@ namespace Valet_UI
                 pythonProcess.StartInfo.RedirectStandardOutput = true;
                 pythonProcess.StartInfo.CreateNoWindow = true;
                 pythonProcess.Start();
+		//Start new thread to read asynchronously from stdout
                 Thread outputThread = new Thread(() => readOutput(floatingWindow));
                 outputThread.Start();
                 Debug.WriteLine("started");
@@ -132,19 +133,42 @@ namespace Valet_UI
 
         private void readOutput(FloatingWindow floatingWindow)
         {
-            bool isReadingOutput = true;
             while (!pythonProcess.StandardOutput.EndOfStream)
             {
                 string currentOutput = pythonProcess.StandardOutput.ReadLine();
-
-                // Update the UI using the main thread
-                Invoke((MethodInvoker)delegate
+                if (currentOutput == null || String.IsNullOrEmpty(currentOutput))
                 {
-                    floatingWindow.changeText(currentOutput);
-                });
-            }
-            isReadingOutput = false;
 
+                }
+                else
+                {
+                    // Update the UI using the main thread
+                    Invoke((MethodInvoker)delegate
+                    {
+                        floatingWindow.changeText(currentOutput);
+                    });
+                    if (currentOutput.Contains("copy"))
+                    {
+                        ShortCuts.copy();
+
+                    }
+                    else if (currentOutput.Contains("paste"))
+                    {
+                        ShortCuts.paste();
+
+                    }
+                    else if (currentOutput.Contains("undo"))
+                    {
+                        ShortCuts.undo();
+
+                    }
+                    else if (currentOutput.Contains("refresh"))
+                    {
+                        ShortCuts.refresh();
+
+                    }
+                }
+            }
         }
 
         /// <summary>
