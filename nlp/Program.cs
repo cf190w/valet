@@ -13,6 +13,7 @@ public class Program
     //test
     public static async Task Main() 
     {
+        /*
         Console.WriteLine("Running C# Program");
         Process pythonProcess = new Process();
         pythonProcess.StartInfo.FileName = "python";
@@ -20,6 +21,7 @@ public class Program
         pythonProcess.StartInfo.UseShellExecute = false;
         pythonProcess.StartInfo.RedirectStandardOutput = true;
 
+        
         pythonProcess.Start();
         while (!pythonProcess.StandardOutput.EndOfStream)
         {
@@ -46,6 +48,7 @@ public class Program
               Console.WriteLine("close was said (hello from c#)");
             }
         }
+        */
 
         //Register the English language model
         Catalyst.Models.English.Register(); //You need to pre-register each language (and install the respective NuGet Packages)
@@ -54,7 +57,7 @@ public class Program
         // Create a Catalyst NLP pipeline for English
         var nlp = await Pipeline.ForAsync(Language.English);
         // Input text and create a document
-        var doc = new Document("Hey Valet. Can you refresh the tab", Language.English);
+        var doc = new Document("Hey Valet. Can you stop the browser Opera from running", Language.English);
         // Process the document
         nlp.ProcessSingle(doc);
 
@@ -66,94 +69,80 @@ public class Program
         // Print the pretty JSON string to the console
         Console.WriteLine(prettyJson);
 
-        //Counting the amount of verbs and nouns in the sentence
-        // Count the number of verbs in the 'doc' object and print the count to the console
-        int numVerbs = verbCount(doc);
-        Console.WriteLine($"The document contains {numVerbs} verbs.");
-        // Count the number of nouns in the 'doc' object and print the count to the console
-        int numNouns = nounCount(doc);
-        Console.WriteLine($"The document contains {numNouns} nouns.");
-
        //Checking the input for specific words
         // Check if the 'input' string contains the word "copy" 
         if (doc.Value.Contains("copy"))
         {
-            // If it does, call the 'wordCopy' function
-            wordCopy();
+            // If it does, call the copy function
+            copy(doc);
         }
         // Check if the 'input' string contains the word "paste"
         else if (doc.Value.Contains("paste"))
         {
-            // If it does, call the 'wordPaste' function
-            wordPaste();
+            // If it does, call the paste function 
+            paste(doc);
         }
         // Check if the 'input' string contains the word "close"
         else if (doc.Value.Contains("close"))
         {
-            // If it does, call the 'wordCloseTab' function
-            wordCloseTab();
+            // If it does, call the close function 
+            close(doc);
         }
         // Check if the 'input' string contains the word "undo"
         else if (doc.Value.Contains("undo"))
         {
-            // If it does, call the 'wordUndo' function
-            wordUndo();
+            // If it does, call the undo function 
+            undo(doc);
         }
         // Check if the 'input' string contains the word "start"
         else if(doc.Value.Contains("start"))
         {
-            // If it does, call the 'wordStart' function
-            wordStart();
+            // If it does, call the start function 
+            start(doc);
         }
         // Check if the 'input' string contains the word "redo"
         else if(doc.Value.Contains("redo"))
         {
-            // If it does, call the 'wordRedo' function
-            wordRedo();
+            // If it does, call the redo function 
+            redo(doc);
         }
         // Check if the 'input' string contains the word "refresh"
         else if(doc.Value.Contains("refresh"))
         {
-            // If it does, call the 'wordRefreshBrowser' function
-            wordRefreshBrowser();
+            // If it does, call the refresh function
+            refresh(doc);
         }
-// Check if the 'input' string contains the word "stop"
-        else if(doc.Value.Contains("close"))
+        // Check if the 'input' string contains the word "stop" and "chrome"
+        else if(doc.Value.Contains("stop"))
         {
             // Check if the 'input' string contains the word "chrome"
             if(doc.Value.Contains("chrome"))
             {
-                // If it does, call the 'wordStopExact' function
-                wordCloseExact();
+                // If it does, call the stopChrome function 
             }
             // Check if the 'input' string contains the word "opera"
             else if (doc.Value.Contains("opera"))
             {
-                // If it does, call the 'wordStopActive' function
-                wordCloseExact();
+                // If it does, call the stopOpera function 
             }
             // Check if the 'input' string contains the word "edge"
             else if (doc.Value.Contains("edge"))
             {
-                // If it does, call the 'wordStopActive' function
-                wordCloseExact();
+                // If it does, call the stopEdge function 
             }
             // Check if the 'input' string contains the word "firefox"
             else if (doc.Value.Contains("firefox"))
             {
-                // If it does, call the 'wordStopActive' function
-                wordCloseExact();
+                // If it does, call the stopFirefox function 
             }
             // Check if the 'input' string contains the word "explorer"
             else if (doc.Value.Contains("explorer"))
             {
-                // If it does, call the 'wordStopActive' function
-                wordCloseExact();
+                // If it does, call the stopExplorer function 
             }
             else 
             {
-                // If it only contains "exact", call the 'wordStopActive' function
-                wordCloseActive();
+                // If the 'input' string doesn't contain any of the above words, call the stopActive function 
             }
         }
         else
@@ -164,138 +153,212 @@ public class Program
     }
 
     /// <summary>
-    /// Counts how many verbs are in the sentence. Also stores all the verbs in the sentence 
+    /// Write a program that implements part of speech tagging for the word copy. 
+    /// If it is a noun, then call the shortcut copy funtion and write copy on to the screen
     /// </summary>
-    public static int verbCount (Document doc)
+    public static void copy(Document doc)
     {
-        // Initialize a counter for the verbs
-        int verbCount = 0;
-
         // Loop through each token list in the document
         foreach (var tokenList in doc.TokensData)
         {
             // Loop through each token in the token list
             foreach (var token in tokenList)
             {
-                // If the part of speech of the token is a verb
-                if (token.Tag == PartOfSpeech.VERB)
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "copy" and it is a verb
+                if (tokenText == "copy" && token.Tag == PartOfSpeech.VERB)
                 {
-                    // Increment the verb counter
-                    verbCount++;
+                    // Call the copy function from ShortCuts class
+                    //ShortCuts.copy();
+                    // Print "Copy" to the console
+                    Console.WriteLine("Copy");
                 }
             }
         }
-        // Return the count of verbs
-        return verbCount;
     }
 
     /// <summary>
-    /// Counts how many nouns are in the sentence. Also stores all the nouns in the sentence
+    /// Write a program that implements part of speech tagging for the word paste.
+    /// If it is a verb, then call the shortcut paste funtion and write paste on to the screen
     /// </summary>
-    public static int nounCount (Document doc)
+    public static void paste(Document doc)
     {
-        // Initialize a counter for the nouns
-        int nounCount = 0;
-
         // Loop through each token list in the document
         foreach (var tokenList in doc.TokensData)
         {
             // Loop through each token in the token list
             foreach (var token in tokenList)
             {
-                // If the part of speech of the token is a noun
-                if (token.Tag == PartOfSpeech.NOUN)
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "paste" and it is a verb
+                if (tokenText == "paste" && token.Tag == PartOfSpeech.VERB)
                 {
-                    // Increment the noun counter
-                    nounCount++;
+                    // Call the paste function from ShortCuts class
+                    //ShortCuts.paste();
+                    // Print "Paste" to the console
+                    Console.WriteLine("Paste");
                 }
             }
         }
-        // Return the count of nouns
-        return nounCount;
-    }
-    /// <summary>
-    /// Function for the word copy to be called and copies highlighted text
-    /// </summary>
-    public static void wordCopy()
-    {
-        ShortCuts.copy();
-        Console.WriteLine("Copy");
     }
 
     /// <summary>
-    /// Function for the word paste to be called 
+    /// Write a program that implements part of speech tagging for the word close.
+    /// If it is a verb, then call the shortcut close funtion and write close on to the screen
     /// </summary>
-    public static void wordPaste()
+    public static void close(Document doc)
     {
-        ShortCuts.paste();
-        Console.WriteLine("Paste");
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "close" and it is a verb
+                if (tokenText == "close" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the close function from ShortCuts class
+                    //ShortCuts.close();
+                    // Print "Close" to the console
+                    Console.WriteLine("Close");
+                }
+            }
+        }
     }
 
     /// <summary>
-    /// Function for the word close to be called 
+    /// Write a program that implements part of speech tagging for the word undo.
+    /// If it is a verb, then call the shortcut undo funtion and write undo on to the screen
     /// </summary>
-    public static void wordCloseTab()
+    public static void undo(Document doc)
     {
-        ShortCuts.closeTab();
-        Console.WriteLine("Close");
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "undo" and it is a verb
+                if (tokenText == "undo" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the undo function from ShortCuts class
+                    //ShortCuts.undo();
+                    // Print "Undo" to the console
+                    Console.WriteLine("Undo");
+                }
+            }
+        }
     }
 
     /// <summary>
-    /// Function for the word Undo to be called
+    /// Write a program that implements part of speech tagging for the word start.
+    /// If it is a verb, then call the shortcut start funtion and write start on to the screen
     /// </summary>
-    public static void openApplicationFunction ()
+    public static void start(Document doc)
     {
-      Console.WriteLine("Open");
-    }
-    public static void wordUndo()
-    {
-      ShortCuts.undo();
-      Console.WriteLine("Undo");
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "start" and it is a verb
+                if (tokenText == "start" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the start function from ShortCuts class
+                    //ShortCuts.start();
+                    // Print "Start" to the console
+                    Console.WriteLine("Start");
+                }
+            }
+        }
     }
 
     /// <summary>
-    /// Function to be called to start any given process using the name of the name of the process
+    /// Write a program that implements part of speech tagging for the word redo.
+    /// If it is a verb, then call the shortcut redo funtion and write redo on to the screen
     /// </summary>
-    public static void wordStart()
-    { 
-        //ShortCuts.Start()   takes String argument
-        Console.WriteLine("Start");
+    public static void redo(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "redo" and it is a verb
+                if (tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the redo function from ShortCuts class
+                    //ShortCuts.redo();
+                    // Print "Redo" to the console
+                    Console.WriteLine("Redo");
+                }
+            }
+        }
     }
 
     /// <summary>
-    /// Function to be called redo the last change
+    /// Write a program that implements part of speech tagging for the word refresh.
+    /// If it is a verb, then call the shortcut refresh funtion and write refresh on to the screen
     /// </summary>
-    public static void wordRedo ()
+    public static void refresh(Document doc)
     {
-        ShortCuts.redo();
-        Console.WriteLine("redo");
-    }
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
 
-    /// <summary>
-    /// Function to be called to refresh a browser tab
-    /// </summary>
-    public static void wordRefreshBrowser ()
-    {
-        ShortCuts.refreshBrowserTab();
-        Console.WriteLine("Refresh");
-    }
-
-    /// <summary>
-    /// Function to be called to stop a process that is currently running
-    /// </summary>
-    public static void wordCloseExact ()
-    {
-        //ShortCuts.StopExact();    takes string argument
-        Console.WriteLine("Close Exact");
-    }
-
-    /// <summary>
-    /// Function to be called to stop the active process
-    /// </summary>
-    public static void wordCloseActive ()
-    {
-        ShortCuts.StopActive();
-        Console.WriteLine("Close Active");
+                // If the token is the word "refresh" and it is a verb
+                if (tokenText == "refresh" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the refresh function from ShortCuts class
+                    //ShortCuts.refresh();
+                    // Print "Refresh" to the console
+                    Console.WriteLine("Refresh");
+                }
+            }
+        }
     }
 }
