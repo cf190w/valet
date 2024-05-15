@@ -57,7 +57,7 @@ public class Program
         // Create a Catalyst NLP pipeline for English
         var nlp = await Pipeline.ForAsync(Language.English);
         // Input text and create a document
-        var doc = new Document("Hey Valet. Can you stop the browser Opera from running", Language.English);
+        var doc = new Document("Hey Valet. Can you stop the browser from running", Language.English);
         // Process the document
         nlp.ProcessSingle(doc);
 
@@ -119,30 +119,36 @@ public class Program
             if(doc.Value.Contains("chrome"))
             {
                 // If it does, call the stopChrome function 
+                stopChrome(doc);
             }
             // Check if the 'input' string contains the word "opera"
             else if (doc.Value.Contains("opera"))
             {
                 // If it does, call the stopOpera function 
+                stopOpera(doc);
             }
             // Check if the 'input' string contains the word "edge"
             else if (doc.Value.Contains("edge"))
             {
                 // If it does, call the stopEdge function 
+                stopEdge(doc);
             }
             // Check if the 'input' string contains the word "firefox"
             else if (doc.Value.Contains("firefox"))
             {
                 // If it does, call the stopFirefox function 
+                stopFirefox(doc);
             }
             // Check if the 'input' string contains the word "explorer"
             else if (doc.Value.Contains("explorer"))
             {
                 // If it does, call the stopExplorer function 
+                stopExplorer(doc);
             }
             else 
             {
                 // If the 'input' string doesn't contain any of the above words, call the stopActive function 
+                stopActive(doc);
             }
         }
         else
@@ -357,6 +363,192 @@ public class Program
                     //ShortCuts.refresh();
                     // Print "Refresh" to the console
                     Console.WriteLine("Refresh");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Write a program that implements part of speech tagging for the words stop and chrome.
+    /// If stop is a verb and chrome is a proper noun (propn) then call the shortcut stop chrome funtion 
+    /// and write stop chrome on to the screen
+    /// </summary>
+    public static void stopChrome(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "stop" and it is a verb
+                if (tokenText == "stop" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the stop function from ShortCuts class
+                    //ShortCuts.stopExact();
+                    // Print "stop" to the console
+                    Console.WriteLine("stop chrome");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Write a program that implements part of speech tagging for the words stop and opera.
+    /// If stop is a verb and opera is a proper noun (propn) then call the shortcut stop opera funtion
+    /// and write stop opera on to the screen
+    /// </summary>
+    public static void stopOpera(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "stop" and it is a verb
+                if (tokenText == "stop" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the stop function from ShortCuts class
+                    //ShortCuts.stopExact();
+                    // Print "stop" to the console
+                    Console.WriteLine("stop opera");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Write a program that implements part of speech tagging for the words stop and edge.
+    /// If stop is a verb and edge is a proper noun (propn) then call the shortcut stop edge funtion
+    /// and write stop edge on to the screen
+    /// </summary>
+    public static void stopEdge(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "stop" and it is a verb
+                if (tokenText == "stop" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the stop function from ShortCuts class
+                    //ShortCuts.stopExact();
+                    // Print "stop" to the console
+                    Console.WriteLine("stop edge");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Write a program that implements part of speech tagging for the words stop and firefox.
+    /// If stop is a verb and firefox is a proper noun (propn) then call the shortcut stop firefox funtion
+    /// and write stop firefox on to the screen
+    /// </summary>
+    public static void stopFirefox(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "stop" and it is a verb
+                if (tokenText == "stop" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the stop function from ShortCuts class
+                    //ShortCuts.stopExact();
+                    // Print "stop" to the console
+                    Console.WriteLine("stop firefox");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Write a program that implements part of speech tagging for the words stop and explorer.
+    /// If stop is a verb and explorer is a proper noun (propn) then call the shortcut stop explorer funtion
+    /// and write stop explorer on to the screen
+    /// </summary>
+    /// 
+    public static void stopExplorer(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "stop" and it is a verb
+                if (tokenText == "stop" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the stop function from ShortCuts class
+                    //ShortCuts.stopExact();
+                    // Print "stop" to the console
+                    Console.WriteLine("stop explorer");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Write a program that implements part of speech tagging for the word stop.
+    /// If it is a verb, then call the shortcut stopactive funtion and write stop on to the screen
+    /// </summary>
+    public static void stopActive(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "stop" and it is a verb
+                if (tokenText == "stop" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the stop function from ShortCuts class
+                    //ShortCuts.stopActive();
+                    // Print "stop" to the console
+                    Console.WriteLine("stop active");
                 }
             }
         }
