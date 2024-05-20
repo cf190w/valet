@@ -5,11 +5,6 @@ using System.Windows.Forms;
 
 public static class ShortCuts
 {
-    [DllImport("user32.dll")]
-    public static extern IntPtr WindowFromPoint(Point point);
-
-    [DllImport("user32.dll")]
-    public static extern bool GetCursorPos(out Point point);
 
     [DllImport("user32.dll")]
     public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint pdwProcessId);
@@ -20,18 +15,6 @@ public static class ShortCuts
     [DllImport("user32.dll")]
     public static extern IntPtr GetForegroundWindow();
 
-    public static String GetActiveProcessFileName()
-    {
-        IntPtr hwnd = GetForegroundWindow();
-        uint pid;
-        GetWindowThreadProcessId(hwnd, out pid);
-        Process p = Process.GetProcessById((int)pid);
-        if(p.MainModule != null){
-            return p.MainModule.FileName;
-        }
-        return "";
-    }
-
     public static Process GetForegroundProcess(){
         uint pid = 0;
         IntPtr hWnd = GetForegroundWindow();
@@ -39,55 +22,7 @@ public static class ShortCuts
         Process fgProc = Process.GetProcessById(Convert.ToInt32(pid));
         return fgProc;
     }
-    public static IntPtr GetWindowUnderCursor()
-    {
-        Point ptCursor = new Point();
-        GetCursorPos(out ptCursor);
-        Console.WriteLine(ptCursor);
-        return WindowFromPoint(ptCursor);
-    }
 	
-    /*
-    public static void Main(string[] args)
-    {
-        try{
-            uint pointer;
-            IntPtr processId;
-            String processName = "";
-
-
-            while(true){
-                Thread.Sleep(1000);
-                processId = GetWindowUnderCursor();
-                pointer = GetWindowThreadProcessId(processId, out pointer);
-                Process check = Process.GetCurrentProcess();
-                Process fgproc = GetForegroundProcess();
-                Console.WriteLine(fgproc.ProcessName);
-                //Process process = Process.GetProcessById(pointer);
-                //processName = process.ProcessName;
-                processName = GetActiveProcessFileName();
-                Console.WriteLine(processId);
-                Console.WriteLine(processName);
-                
-                //Console.WriteLine(GetTextFromFocusedControl());
-
-                Console.WriteLine("process.getWindow: "+pointer);
-                Console.WriteLine("process.getProcess: "+check.Id);
-                
-                
-                //Console.WriteLine(GetProcessesFileName(processId, out processName));
-                //Stop(fgproc.ProcessName);
-            }
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            String[] redo = new string[0];    
-            Main(redo);
-        }
-        
-    }
-    */
 
     /// <summary>
     /// starts any given process using the name of the name of the process
@@ -126,8 +61,8 @@ public static class ShortCuts
     /// <summary>
     /// refreshes the active window
     /// </summary>
-    public static void refresh(){
-        Process [] processes = Process.GetProcessesByName("iexplore");
+    public static void refresh(String processName){
+        Process [] processes = Process.GetProcessesByName(processName);
 
             foreach(Process proc in processes)
             {
@@ -184,13 +119,13 @@ public static class ShortCuts
         if(fgproc.ProcessName.Contains("Terminal") || fgproc.ProcessName == "cmd" || fgproc.ProcessName == "powershell"){
             Console.WriteLine("copying");
         }
-	else if (fgproc.ProcessName == Process.GetCurrentProcess().ProcessName) {
-	   Debug.WriteLine("Current process is the windows form app itself");
-	}
+        else if (fgproc.ProcessName == Process.GetCurrentProcess().ProcessName) {
+            Debug.WriteLine("Current process is the windows form app itself");
+        }
         else {
             SendKeys.SendWait("^c");
         }
-    }
+        }
     
     /// <summary>
     /// pastes text from clipboard
