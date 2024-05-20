@@ -1,29 +1,35 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 import sys
 import requests
-import zipfile
+import os
+
 
 current_os = sys.platform
-model_url = "https://alphacephei.com/vosk/models/vosk-model-en-us-0.22.zip"
-output_file = "output.zip"
-
-def extract_and_write_file(zip_file_path, output_folder):
-    with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-        zip_ref.extractall(output_folder)
+model_url = "https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip"
 
 if current_os == "win32":
     subdir = "Valet_UI/stt"
-    print("building for windows")
-    response = requests.get(model_url)
-    with open(output_file, "wb") as file:
-        file.write(response.content)
-
+    print("Building for Windows...")
 elif current_os == "linux":
     subdir = "Valet_nix/stt"
-    print("building for linux")
-    response = requests.get(model_url)
-    with open(output_file, "wb") as file:
-        file.write(response.content)
-    extract_and_write_file(output_file, subdir)
+    print("Building for Linux...")
+else:
+    subdir = None
+    print("Unsupported OS.")
 
+if subdir:
+    output_path = os.path.join(subdir, "vosk-model-small-en-us-0.15.zip")
+    response = requests.get(model_url, stream=True)
+
+    if response.status_code == 200:
+        with open(output_path, "wb") as file:
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+        print("ZIP file downloaded successfully.")
+    else:
+        print("Failed to download ZIP file. Status code:", response.status_code)
+else:
+    print("ZIP file not downloaded. Unsupported OS.")
+
+sys.exit()
