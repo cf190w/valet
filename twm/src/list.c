@@ -221,5 +221,3 @@ void PrintWindowNames(TwmWindow* window) {
       current = current->next;
   }
 }
-
-
