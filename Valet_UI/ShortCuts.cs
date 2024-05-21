@@ -22,12 +22,7 @@ public static class ShortCuts
         Process fgProc = Process.GetProcessById(Convert.ToInt32(pid));
         return fgProc;
     }
-	
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> f6dfa40031870faccc8182ff5c43a943ec04da16
     /// <summary>
     /// starts any given process using the name of the name of the process
     /// </summary>
