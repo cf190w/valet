@@ -152,9 +152,9 @@
             label17.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label17.Location = new Point(14, 42);
             label17.Name = "label17";
-            label17.Size = new Size(185, 20);
+            label17.Size = new Size(168, 20);
             label17.TabIndex = 3;
-            label17.Text = "Undoes previous change";
+            label17.Text = "Undo previous change";
             // 
             // label18
             // 
@@ -182,9 +182,9 @@
             label19.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label19.Location = new Point(14, 42);
             label19.Name = "label19";
-            label19.Size = new Size(196, 20);
+            label19.Size = new Size(188, 20);
             label19.TabIndex = 3;
-            label19.Text = "Resfreshes active window.";
+            label19.Text = "Refreshes active window.";
             // 
             // label20
             // 
@@ -242,9 +242,9 @@
             label23.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label23.Location = new Point(14, 42);
             label23.Name = "label23";
-            label23.Size = new Size(196, 20);
+            label23.Size = new Size(188, 20);
             label23.TabIndex = 3;
-            label23.Text = "Pastes text from clipboard.";
+            label23.Text = "Paste text from clipboard.";
             // 
             // label24
             // 
