@@ -6,5 +6,5 @@ stt/*.pdb
 stt/*.json
 stt/runtimes
 stt/vosk-model*
+stt/Valet_nix
 stt/*/
-stt/*
