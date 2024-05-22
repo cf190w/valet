@@ -131,8 +131,11 @@ namespace Valet_UI
             }
         }
 
-        private void readOutput(FloatingWindow floatingWindow)
+        private async void readOutput(FloatingWindow floatingWindow)
         {
+            Catalyst.Models.English.Register();
+            Storage.Current = new DiskStorage("cataylst-models");
+            var nlp = await Pipeline.ForAsync(Language.English);
             while (!pythonProcess.StandardOutput.EndOfStream)
             {
                 string currentOutput = pythonProcess.StandardOutput.ReadLine();
@@ -142,14 +145,17 @@ namespace Valet_UI
                 }
                 else
                 {
+                    var doc = new Document(currentOutput, Language.English);
                     // Update the UI using the main thread
                     Invoke((MethodInvoker)delegate
                     {
                         floatingWindow.changeText(currentOutput);
                     });
+                    processNLP(doc);
+                    /*
                     if (currentOutput.Contains("copy"))
                     {
-                        ShortCuts.copy();
+                       copyNLP(doc);
 
                     }
                     else if (currentOutput.Contains("paste"))
@@ -170,6 +176,12 @@ namespace Valet_UI
                     {
                         ShortCuts.redo();
                     }
+
+                    if(doc.Value.Contains("copy"))
+                    {
+                        
+                    }
+                    */
                 }
             }
         }
@@ -185,6 +197,46 @@ namespace Valet_UI
             if (pythonProcess != null && !pythonProcess.HasExited)
             {
                 pythonProcess.Kill();
+            }
+        }
+        private static void processNLP(Document doc)
+        {
+            // Loop through each token list in the document
+            foreach (var tokenList in doc.TokensData)
+            {
+                // Loop through each token in the token list
+                foreach (var token in tokenList)
+                {
+                    // Get the start and end indices of the token in the original text
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    // Extract the token text from the original text
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                    if (tokenText == "copy" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.copy();
+                    }
+                    else if (tokenText == "refresh" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        
+                    }
+
+                }
+            }
+        }
+     
+        
+        private static void refreshNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                }
             }
         }
     }
