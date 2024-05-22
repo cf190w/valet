@@ -6,3 +6,5 @@ stt/*.pdb
 stt/*.json
 stt/runtimes
 stt/vosk-model*
+stt/*/
+stt/*
