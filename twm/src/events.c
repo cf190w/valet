@@ -83,6 +83,11 @@ static TwmWindow *ButtonWindow; /* button press window structure */
 static XEvent ButtonEvent;      /* button press event */
 XEvent Event;                   /* the current event */
 static TwmWindow *Tmp_win;      /* the current twm window */
+static TwmWindow *First_win;
+static TwmWindow *Second_win;
+/** We shall maintain two different TwmWindow pointer variables
+ * and assign according to priority according to events such as keystrokes/clicks etc
+ */
 
 /** Used in HandleEnterNotify to remove border highlight from a window
  * that has not received a LeaveNotify event because of a pointer grab
@@ -675,6 +680,10 @@ HandleKeyPress(void)
             (Tmp_win->list && (Event.xany.window == Tmp_win->list->w))) {
             Event.xkey.window = Tmp_win->w;
             XSendEvent(dpy, Tmp_win->w, False, KeyPressMask, &Event);
+            /* Copy the value stored within the tmp window pointer here into OUR pointer value which we're going to use and dereference later 
+             * In order to resize/remap windows
+             */
+            First_win = Tmp_win;
         }
     }
 
