@@ -1,0 +1,6 @@
+Avalonia*
+Valet_nix
+*.dll
+*.json
+*.pdb
+/*/
