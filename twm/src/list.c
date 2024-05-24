@@ -221,3 +221,8 @@ void PrintWindowNames(TwmWindow* window) {
       current = current->next;
   }
 }
+
+void PrintWindowName(TwmWindow* window) {
+  printf("Window name: %s\n", window->full_name);
+  printf("frame height: %d\n", window->frame_height);
+}
