@@ -24,5 +24,6 @@
     <PackageReference Include="Catalyst" Version="1.0.44557" />
     <PackageReference Include="Catalyst.Models.English" Version="1.0.30952" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="X11" Version="1.0.6" />
   </ItemGroup>
 </Project>
