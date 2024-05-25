@@ -10,9 +10,4 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-
-    private void ButtonOnClick(object? sender, RoutedEventArgs e) {
-      Console.WriteLine("hello button hit");
-      TextBlockName.Text = "CLICKED";
-    }
 }

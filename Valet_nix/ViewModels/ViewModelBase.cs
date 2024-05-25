@@ -2,6 +2,6 @@
 
 namespace Valet_nix.ViewModels;
 
-public class ViewModelBase : ReactiveObject
+public class ViewModelBase 
 {
 }
