@@ -198,9 +198,18 @@ public static class ShortCuts
     public static void StopActive(){
         Process fgproc = GetForegroundProcess();
         Process[] process = Process.GetProcessesByName(fgproc.ProcessName);
-        foreach(Process aProcess in process){
+        if(fgproc.ProcessName.Contains("Terminal") || fgproc.ProcessName == "cmd" || fgproc.ProcessName == "powershell"){
+            Console.WriteLine("copying");
+        }
+	    else if (fgproc.ProcessName == Process.GetCurrentProcess().ProcessName) {
+	        Debug.WriteLine("Current process is the windows form app itself");
+	    }
+        else {
+            foreach(Process aProcess in process){
             aProcess.Kill();
         }
+        }
+        
     }
         
     /// <summary>

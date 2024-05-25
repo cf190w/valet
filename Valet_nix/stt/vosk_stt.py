@@ -9,7 +9,7 @@ import sys
 
 #Load the vosk model
 model_path = "vosk-model-small-en-us-0.15"
-model_path = os.path.expanduser(model_path)
+model_path = "vosk-model-small-en-us-0.15"
 if not os.path.exists(model_path):
     print(f"Model path {model_path} does not exist.")
     # Check if the text file exists
