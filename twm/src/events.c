@@ -351,8 +351,14 @@ void
 HandleEvents(XtAppContext appContext)
 {
     while (TRUE) {
-        if (First_win != NULL) {
+    if (First_win != NULL) {
+          printf("first window: ");
           PrintWindowName(First_win);
+          fflush(stdout);
+        }
+        if (Second_win != NULL) {
+          printf("Second_win window: ");
+          PrintWindowName(Second_win);
           fflush(stdout);
         }
         if (enter_flag && !QLength(dpy)) {
@@ -1534,7 +1540,22 @@ HandleButtonRelease(void)
 
         if (XFindContext(dpy, DragWindow, TwmContext, &context_data) == 0)
             Tmp_win = (TwmWindow *) context_data;
-            First_win = Tmp_win;
+            if(First_win==NULL) {
+
+              First_win = Tmp_win;
+            }
+            else if (First_win==Tmp_win) {
+              printf("current first window pointer is the the same as tmp_window \n");
+              fflush(stdout);
+            }
+            else if(First_win!=NULL&&Second_win==NULL) {
+              Second_win=First_win;
+              First_win=Tmp_win;
+            }
+            else if(First_win!=NULL&&Second_win!=NULL) {
+              Second_win=First_win;
+              First_win=Tmp_win;
+            }
         if (DragWindow == Tmp_win->frame) {
             xl = Event.xbutton.x_root - DragX - Tmp_win->frame_bw;
             yt = Event.xbutton.y_root - DragY - Tmp_win->frame_bw;
