@@ -83,6 +83,11 @@ static TwmWindow *ButtonWindow; /* button press window structure */
 static XEvent ButtonEvent;      /* button press event */
 XEvent Event;                   /* the current event */
 static TwmWindow *Tmp_win;      /* the current twm window */
+static TwmWindow *First_win;
+static TwmWindow *Second_win;
+/** We shall maintain two different TwmWindow pointer variables
+ * and assign according to priority according to events such as keystrokes/clicks etc
+ */
 
 /** Used in HandleEnterNotify to remove border highlight from a window
  * that has not received a LeaveNotify event because of a pointer grab
@@ -346,7 +351,16 @@ void
 HandleEvents(XtAppContext appContext)
 {
     while (TRUE) {
-        PrintWindowNames(&(Scr->TwmRoot));
+    if (First_win != NULL) {
+          printf("first window: ");
+          PrintWindowName(First_win);
+          fflush(stdout);
+        }
+        if (Second_win != NULL) {
+          printf("Second_win window: ");
+          PrintWindowName(Second_win);
+          fflush(stdout);
+        }
         if (enter_flag && !QLength(dpy)) {
             if (enter_win && enter_win != raise_win) {
                 AutoRaiseWindow(enter_win);     /* sets enter_flag T */
@@ -673,6 +687,8 @@ HandleKeyPress(void)
             Event.xany.window == Tmp_win->frame ||
             Event.xany.window == Tmp_win->title_w ||
             (Tmp_win->list && (Event.xany.window == Tmp_win->list->w))) {
+            /* Copy the value stored within the tmp window pointer here into OUR pointer value which we're going to use and dereference later 
+             */
             Event.xkey.window = Tmp_win->w;
             XSendEvent(dpy, Tmp_win->w, False, KeyPressMask, &Event);
         }
@@ -1524,6 +1540,22 @@ HandleButtonRelease(void)
 
         if (XFindContext(dpy, DragWindow, TwmContext, &context_data) == 0)
             Tmp_win = (TwmWindow *) context_data;
+            if(First_win==NULL) {
+
+              First_win = Tmp_win;
+            }
+            else if (First_win==Tmp_win) {
+              printf("current first window pointer is the the same as tmp_window \n");
+              fflush(stdout);
+            }
+            else if(First_win!=NULL&&Second_win==NULL) {
+              Second_win=First_win;
+              First_win=Tmp_win;
+            }
+            else if(First_win!=NULL&&Second_win!=NULL) {
+              Second_win=First_win;
+              First_win=Tmp_win;
+            }
         if (DragWindow == Tmp_win->frame) {
             xl = Event.xbutton.x_root - DragX - Tmp_win->frame_bw;
             yt = Event.xbutton.y_root - DragY - Tmp_win->frame_bw;

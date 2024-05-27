@@ -14,7 +14,7 @@ namespace Valet_UI
     {
         public Dictionary()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();           
+        }        
     }
-}
+} 

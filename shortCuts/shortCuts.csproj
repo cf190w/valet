@@ -10,8 +10,4 @@
   <ItemGroup>
     <PackageReference Include="MouseKeyHook" Version="5.7.1" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\shortcutsWinForm\shortcutsWinForm.csproj" />
-  </ItemGroup>
 </Project>
