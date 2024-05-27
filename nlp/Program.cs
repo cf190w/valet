@@ -57,7 +57,7 @@ public class Program
         // Create a Catalyst NLP pipeline for English
         var nlp = await Pipeline.ForAsync(Language.English);
         // Input text and create a document
-        var doc = new Document("Hey Valet. Can you stop the browser from running", Language.English);
+        var doc = new Document("Hey Valet. Can you take this text", Language.English);
         // Process the document
         nlp.ProcessSingle(doc);
 
@@ -76,17 +76,37 @@ public class Program
             // If it does, call the copy function
             copy(doc);
         }
+        else if (doc.Value.Contains("grab"))
+        {
+            // If it does, call the grab function
+            grab(doc);
+        }
+        else if (doc.Value.Contains("take"))
+        {
+            // If it does, call the take function
+            take(doc);
+        }
         // Check if the 'input' string contains the word "paste"
         else if (doc.Value.Contains("paste"))
         {
             // If it does, call the paste function 
             paste(doc);
         }
+        else if (doc.Value.Contains("insert"))
+        {
+            // If it does, call the insert function 
+            insert(doc);
+        }
         // Check if the 'input' string contains the word "close"
         else if (doc.Value.Contains("close"))
         {
             // If it does, call the close function 
             close(doc);
+        }
+        else if (doc.Value.Contains("shut"))
+        {
+            // If it does, call the shut function 
+            shut(doc);
         }
         // Check if the 'input' string contains the word "undo"
         else if (doc.Value.Contains("undo"))
@@ -159,8 +179,8 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word copy. 
-    /// If it is a noun, then call the shortcut copy funtion and write copy on to the screen
+    /// program that implements part of speech tagging for the word copy. 
+    /// If it is a verb, then call the shortcut copy funtion and write copy on to the screen
     /// </summary>
     public static void copy(Document doc)
     {
@@ -180,7 +200,7 @@ public class Program
                 if (tokenText == "copy" && token.Tag == PartOfSpeech.VERB)
                 {
                     // Call the copy function from ShortCuts class
-                    //ShortCuts.copy();
+                    ShortCuts.copy();
                     // Print "Copy" to the console
                     Console.WriteLine("Copy");
                 }
@@ -189,7 +209,67 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word paste.
+    /// program that implements part of speech tagging for the word grab.
+    /// If it is a verb, then call the shortcut copy funtion and write grab on to the screen
+    /// </summary>
+    public static void grab(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "grab" and it is a verb
+                if (tokenText == "grab" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the copy function from ShortCuts class
+                    ShortCuts.copy();
+                    // Print "Grab" to the console
+                    Console.WriteLine("Copy");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// program that implements part of speech tagging for the word take.
+    /// If it is a verb, then call the shortcut copy funtion and write take on to the screen
+    /// </summary>
+    public static void take(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "take" and it is a verb
+                if (tokenText == "take" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the copy function from ShortCuts class
+                    ShortCuts.copy();
+                    // Print "Take" to the console
+                    Console.WriteLine("Copy");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// program that implements part of speech tagging for the word paste.
     /// If it is a verb, then call the shortcut paste funtion and write paste on to the screen
     /// </summary>
     public static void paste(Document doc)
@@ -210,7 +290,7 @@ public class Program
                 if (tokenText == "paste" && token.Tag == PartOfSpeech.VERB)
                 {
                     // Call the paste function from ShortCuts class
-                    //ShortCuts.paste();
+                    ShortCuts.paste();
                     // Print "Paste" to the console
                     Console.WriteLine("Paste");
                 }
@@ -219,7 +299,37 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word close.
+    /// program that implements part of speech tagging for the word insert.
+    /// If it is a verb, then call the shortcut paste funtion and write insert on to the screen
+    /// </summary>
+    public static void insert(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "insert" and it is a verb
+                if (tokenText == "insert" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the paste function from ShortCuts class
+                    ShortCuts.paste();
+                    // Print "Insert" to the console
+                    Console.WriteLine("Paste");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// program that implements part of speech tagging for the word close.
     /// If it is a verb, then call the shortcut close funtion and write close on to the screen
     /// </summary>
     public static void close(Document doc)
@@ -249,7 +359,37 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word undo.
+    /// program that implements part of speech tagging for the word shut.
+    /// If it is a verb, then call the shortcut close funtion and write shut on to the screen
+    /// </summary>
+    public static void shut(Document doc)
+    {
+        // Loop through each token list in the document
+        foreach (var tokenList in doc.TokensData)
+        {
+            // Loop through each token in the token list
+            foreach (var token in tokenList)
+            {
+                // Get the start and end indices of the token in the original text
+                int start = token.Bounds[0];
+                int end = token.Bounds[1];
+                // Extract the token text from the original text
+                string tokenText = doc.Value.Substring(start, end - start + 1);
+
+                // If the token is the word "shut" and it is a verb
+                if (tokenText == "shut" && token.Tag == PartOfSpeech.VERB)
+                {
+                    // Call the close function from ShortCuts class
+                    //ShortCuts.close();
+                    // Print "Shut" to the console
+                    Console.WriteLine("Shut");
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// program that implements part of speech tagging for the word undo.
     /// If it is a verb, then call the shortcut undo funtion and write undo on to the screen
     /// </summary>
     public static void undo(Document doc)
@@ -270,7 +410,7 @@ public class Program
                 if (tokenText == "undo" && token.Tag == PartOfSpeech.VERB)
                 {
                     // Call the undo function from ShortCuts class
-                    //ShortCuts.undo();
+                    ShortCuts.undo();
                     // Print "Undo" to the console
                     Console.WriteLine("Undo");
                 }
@@ -279,7 +419,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word start.
+    /// program that implements part of speech tagging for the word start.
     /// If it is a verb, then call the shortcut start funtion and write start on to the screen
     /// </summary>
     public static void start(Document doc)
@@ -309,7 +449,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word redo.
+    /// program that implements part of speech tagging for the word redo.
     /// If it is a verb, then call the shortcut redo funtion and write redo on to the screen
     /// </summary>
     public static void redo(Document doc)
@@ -330,7 +470,7 @@ public class Program
                 if (tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
                 {
                     // Call the redo function from ShortCuts class
-                    //ShortCuts.redo();
+                    ShortCuts.redo();
                     // Print "Redo" to the console
                     Console.WriteLine("Redo");
                 }
@@ -339,7 +479,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word refresh.
+    /// program that implements part of speech tagging for the word refresh.
     /// If it is a verb, then call the shortcut refresh funtion and write refresh on to the screen
     /// </summary>
     public static void refresh(Document doc)
@@ -360,7 +500,7 @@ public class Program
                 if (tokenText == "refresh" && token.Tag == PartOfSpeech.VERB)
                 {
                     // Call the refresh function from ShortCuts class
-                    //ShortCuts.refresh();
+                    ShortCuts.refresh();
                     // Print "Refresh" to the console
                     Console.WriteLine("Refresh");
                 }
@@ -369,7 +509,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the words stop and chrome.
+    /// program that implements part of speech tagging for the words stop and chrome.
     /// If stop is a verb and chrome is a proper noun (propn) then call the shortcut stop chrome funtion 
     /// and write stop chrome on to the screen
     /// </summary>
@@ -400,7 +540,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the words stop and opera.
+    /// program that implements part of speech tagging for the words stop and opera.
     /// If stop is a verb and opera is a proper noun (propn) then call the shortcut stop opera funtion
     /// and write stop opera on to the screen
     /// </summary>
@@ -431,7 +571,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the words stop and edge.
+    /// program that implements part of speech tagging for the words stop and edge.
     /// If stop is a verb and edge is a proper noun (propn) then call the shortcut stop edge funtion
     /// and write stop edge on to the screen
     /// </summary>
@@ -462,7 +602,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the words stop and firefox.
+    /// program that implements part of speech tagging for the words stop and firefox.
     /// If stop is a verb and firefox is a proper noun (propn) then call the shortcut stop firefox funtion
     /// and write stop firefox on to the screen
     /// </summary>
@@ -493,7 +633,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the words stop and explorer.
+    /// program that implements part of speech tagging for the words stop and explorer.
     /// If stop is a verb and explorer is a proper noun (propn) then call the shortcut stop explorer funtion
     /// and write stop explorer on to the screen
     /// </summary>
@@ -525,7 +665,7 @@ public class Program
     }
 
     /// <summary>
-    /// Write a program that implements part of speech tagging for the word stop.
+    /// program that implements part of speech tagging for the word stop.
     /// If it is a verb, then call the shortcut stopactive funtion and write stop on to the screen
     /// </summary>
     public static void stopActive(Document doc)
