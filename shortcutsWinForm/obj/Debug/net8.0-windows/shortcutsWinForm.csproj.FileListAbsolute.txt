@@ -1,0 +1,17 @@
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.exe
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.deps.json
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.runtimeconfig.json
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.dll
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\bin\Debug\net8.0-windows\shortcutsWinForm.pdb
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.Form1.resources
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.csproj.GenerateResource.cache
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.AssemblyInfoInputs.cache
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.AssemblyInfo.cs
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.csproj.CoreCompileInputs.cache
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.sourcelink.json
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.dll
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\refint\shortcutsWinForm.dll
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.pdb
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\shortcutsWinForm.genruntimeconfig.cache
+C:\Users\kai\OneDrive\ドキュメント\Waikato Uni\Compx 241\project\valet-1\shortcutsWinForm\obj\Debug\net8.0-windows\ref\shortcutsWinForm.dll
