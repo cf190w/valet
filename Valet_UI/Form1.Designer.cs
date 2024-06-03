@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             panel2 = new Panel();
             button_Dashboard = new Button();
@@ -36,9 +37,9 @@
             button1 = new Button();
             button_Minimize = new Button();
             dashboard1 = new Dashboard();
-            dictionary1 = new Dictionary();
             settings1 = new Settings();
             button2 = new Button();
+            dictionary1 = new Dictionary();
             SuspendLayout();
             // 
             // panel1
@@ -124,13 +125,6 @@
             dashboard1.Size = new Size(389, 554);
             dashboard1.TabIndex = 7;
             // 
-            // dictionary1
-            // 
-            dictionary1.Location = new Point(63, 29);
-            dictionary1.Name = "dictionary1";
-            dictionary1.Size = new Size(389, 554);
-            dictionary1.TabIndex = 8;
-            // 
             // settings1
             // 
             settings1.Location = new Point(63, 29);
@@ -152,6 +146,13 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
+            // dictionary1
+            // 
+            dictionary1.Location = new Point(63, 29);
+            dictionary1.Name = "dictionary1";
+            dictionary1.Size = new Size(389, 554);
+            dictionary1.TabIndex = 8;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -159,7 +160,6 @@
             ClientSize = new Size(462, 685);
             ControlBox = false;
             Controls.Add(button2);
-            Controls.Add(settings1);
             Controls.Add(dictionary1);
             Controls.Add(dashboard1);
             Controls.Add(button_Minimize);
@@ -169,7 +169,9 @@
             Controls.Add(button_Dashboard);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Controls.Add(settings1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             FormClosing += Form1_FormClosing;
@@ -186,8 +188,8 @@
         private Button button1;
         private Button button_Minimize;
         private Dashboard dashboard1;
-        private Dictionary dictionary1;
         private Settings settings1;
         private Button button2;
+        private Dictionary dictionary1;
     }
 }

@@ -85,7 +85,8 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(14, 42);
+            label2.ForeColor = Color.FromArgb(64, 64, 64);
+            label2.Location = new Point(6, 42);
             label2.Name = "label2";
             label2.Size = new Size(166, 20);
             label2.TabIndex = 3;
@@ -94,17 +95,17 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label3.Location = new Point(14, 17);
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(6, 17);
             label3.Name = "label3";
-            label3.Size = new Size(128, 25);
+            label3.Size = new Size(115, 24);
             label3.TabIndex = 4;
             label3.Text = "Commands";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Subtract;
-            pictureBox1.Location = new Point(343, 23);
+            pictureBox1.Location = new Point(351, 23);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(24, 24);
             pictureBox1.TabIndex = 4;
@@ -113,10 +114,10 @@
             // label_Dictionary
             // 
             label_Dictionary.AutoSize = true;
-            label_Dictionary.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
-            label_Dictionary.Location = new Point(28, 23);
+            label_Dictionary.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_Dictionary.Location = new Point(12, 23);
             label_Dictionary.Name = "label_Dictionary";
-            label_Dictionary.Size = new Size(146, 31);
+            label_Dictionary.Size = new Size(129, 29);
             label_Dictionary.TabIndex = 5;
             label_Dictionary.Text = "Dictionary";
             // 
@@ -133,7 +134,7 @@
             flowLayoutPanel_Dictionary.Controls.Add(panel17);
             flowLayoutPanel_Dictionary.Location = new Point(3, 153);
             flowLayoutPanel_Dictionary.Name = "flowLayoutPanel_Dictionary";
-            flowLayoutPanel_Dictionary.Size = new Size(383, 397);
+            flowLayoutPanel_Dictionary.Size = new Size(383, 424);
             flowLayoutPanel_Dictionary.TabIndex = 10;
             // 
             // panel10
@@ -143,14 +144,15 @@
             panel10.Controls.Add(label18);
             panel10.Location = new Point(3, 3);
             panel10.Name = "panel10";
-            panel10.Size = new Size(341, 74);
+            panel10.Size = new Size(369, 74);
             panel10.TabIndex = 13;
             // 
             // label17
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.Location = new Point(14, 42);
+            label17.ForeColor = Color.FromArgb(64, 64, 64);
+            label17.Location = new Point(6, 42);
             label17.Name = "label17";
             label17.Size = new Size(168, 20);
             label17.TabIndex = 3;
@@ -159,10 +161,10 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label18.Location = new Point(14, 17);
+            label18.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.Location = new Point(6, 17);
             label18.Name = "label18";
-            label18.Size = new Size(67, 25);
+            label18.Size = new Size(60, 24);
             label18.TabIndex = 4;
             label18.Text = "Undo";
             // 
@@ -173,14 +175,15 @@
             panel11.Controls.Add(label20);
             panel11.Location = new Point(3, 83);
             panel11.Name = "panel11";
-            panel11.Size = new Size(341, 74);
+            panel11.Size = new Size(369, 74);
             panel11.TabIndex = 14;
             // 
             // label19
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label19.Location = new Point(14, 42);
+            label19.ForeColor = Color.FromArgb(64, 64, 64);
+            label19.Location = new Point(6, 42);
             label19.Name = "label19";
             label19.Size = new Size(188, 20);
             label19.TabIndex = 3;
@@ -189,10 +192,10 @@
             // label20
             // 
             label20.AutoSize = true;
-            label20.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label20.Location = new Point(14, 17);
+            label20.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.Location = new Point(6, 17);
             label20.Name = "label20";
-            label20.Size = new Size(94, 25);
+            label20.Size = new Size(82, 24);
             label20.TabIndex = 4;
             label20.Text = "Refresh";
             // 
@@ -203,14 +206,15 @@
             panel12.Controls.Add(label22);
             panel12.Location = new Point(3, 163);
             panel12.Name = "panel12";
-            panel12.Size = new Size(341, 74);
+            panel12.Size = new Size(369, 74);
             panel12.TabIndex = 15;
             // 
             // label21
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label21.Location = new Point(14, 42);
+            label21.ForeColor = Color.FromArgb(64, 64, 64);
+            label21.Location = new Point(6, 42);
             label21.Name = "label21";
             label21.Size = new Size(159, 20);
             label21.TabIndex = 3;
@@ -219,10 +223,10 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label22.Location = new Point(14, 17);
+            label22.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label22.Location = new Point(6, 17);
             label22.Name = "label22";
-            label22.Size = new Size(233, 25);
+            label22.Size = new Size(206, 24);
             label22.TabIndex = 4;
             label22.Text = "Refresh Browser Tab";
             // 
@@ -233,14 +237,15 @@
             panel13.Controls.Add(label24);
             panel13.Location = new Point(3, 243);
             panel13.Name = "panel13";
-            panel13.Size = new Size(341, 74);
+            panel13.Size = new Size(369, 74);
             panel13.TabIndex = 9;
             // 
             // label23
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label23.Location = new Point(14, 42);
+            label23.ForeColor = Color.FromArgb(64, 64, 64);
+            label23.Location = new Point(6, 42);
             label23.Name = "label23";
             label23.Size = new Size(188, 20);
             label23.TabIndex = 3;
@@ -249,10 +254,10 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label24.Location = new Point(8, 17);
+            label24.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label24.Location = new Point(6, 17);
             label24.Name = "label24";
-            label24.Size = new Size(72, 25);
+            label24.Size = new Size(61, 24);
             label24.TabIndex = 4;
             label24.Text = "Paste";
             // 
@@ -263,14 +268,15 @@
             panel14.Controls.Add(label26);
             panel14.Location = new Point(3, 323);
             panel14.Name = "panel14";
-            panel14.Size = new Size(341, 74);
+            panel14.Size = new Size(369, 74);
             panel14.TabIndex = 10;
             // 
             // label25
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label25.Location = new Point(14, 42);
+            label25.ForeColor = Color.FromArgb(64, 64, 64);
+            label25.Location = new Point(6, 42);
             label25.Name = "label25";
             label25.Size = new Size(182, 20);
             label25.TabIndex = 3;
@@ -279,10 +285,10 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label26.Location = new Point(14, 17);
+            label26.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label26.Location = new Point(6, 17);
             label26.Name = "label26";
-            label26.Size = new Size(67, 25);
+            label26.Size = new Size(60, 24);
             label26.TabIndex = 4;
             label26.Text = "Redo";
             // 
@@ -293,14 +299,15 @@
             panel15.Controls.Add(label28);
             panel15.Location = new Point(3, 403);
             panel15.Name = "panel15";
-            panel15.Size = new Size(341, 74);
+            panel15.Size = new Size(369, 74);
             panel15.TabIndex = 11;
             // 
             // label27
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label27.Location = new Point(14, 42);
+            label27.ForeColor = Color.FromArgb(64, 64, 64);
+            label27.Location = new Point(6, 42);
             label27.Name = "label27";
             label27.Size = new Size(200, 20);
             label27.TabIndex = 3;
@@ -309,10 +316,10 @@
             // label28
             // 
             label28.AutoSize = true;
-            label28.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label28.Location = new Point(14, 17);
+            label28.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label28.Location = new Point(6, 17);
             label28.Name = "label28";
-            label28.Size = new Size(62, 25);
+            label28.Size = new Size(51, 24);
             label28.TabIndex = 4;
             label28.Text = "Start";
             // 
@@ -323,14 +330,15 @@
             panel16.Controls.Add(label30);
             panel16.Location = new Point(3, 483);
             panel16.Name = "panel16";
-            panel16.Size = new Size(341, 74);
+            panel16.Size = new Size(369, 74);
             panel16.TabIndex = 12;
             // 
             // label29
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.Location = new Point(14, 42);
+            label29.ForeColor = Color.FromArgb(64, 64, 64);
+            label29.Location = new Point(6, 42);
             label29.Name = "label29";
             label29.Size = new Size(249, 20);
             label29.TabIndex = 3;
@@ -339,10 +347,10 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label30.Location = new Point(14, 17);
+            label30.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label30.Location = new Point(6, 17);
             label30.Name = "label30";
-            label30.Size = new Size(119, 25);
+            label30.Size = new Size(105, 24);
             label30.TabIndex = 4;
             label30.Text = "Close Tab";
             // 
@@ -353,14 +361,15 @@
             panel17.Controls.Add(label32);
             panel17.Location = new Point(3, 563);
             panel17.Name = "panel17";
-            panel17.Size = new Size(341, 74);
+            panel17.Size = new Size(369, 74);
             panel17.TabIndex = 8;
             // 
             // label31
             // 
             label31.AutoSize = true;
             label31.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label31.Location = new Point(14, 42);
+            label31.ForeColor = Color.FromArgb(64, 64, 64);
+            label31.Location = new Point(6, 42);
             label31.Name = "label31";
             label31.Size = new Size(195, 20);
             label31.TabIndex = 3;
@@ -369,10 +378,10 @@
             // label32
             // 
             label32.AutoSize = true;
-            label32.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
-            label32.Location = new Point(14, 17);
+            label32.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label32.Location = new Point(6, 17);
             label32.Name = "label32";
-            label32.Size = new Size(66, 25);
+            label32.Size = new Size(58, 24);
             label32.TabIndex = 4;
             label32.Text = "Copy";
             // 
@@ -385,7 +394,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Name = "Dictionary";
-            Size = new Size(389, 554);
+            Size = new Size(389, 580);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

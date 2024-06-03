@@ -55,17 +55,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold);
-            label1.Location = new Point(28, 23);
+            label1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 23);
             label1.Name = "label1";
-            label1.Size = new Size(205, 31);
+            label1.Size = new Size(182, 29);
             label1.TabIndex = 0;
             label1.Text = "My DashBoard";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Subtract;
-            pictureBox1.Location = new Point(343, 23);
+            pictureBox1.Location = new Point(351, 23);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(24, 24);
             pictureBox1.TabIndex = 1;
@@ -85,6 +85,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(64, 64, 64);
             label2.Location = new Point(14, 42);
             label2.Name = "label2";
             label2.Size = new Size(247, 20);
@@ -94,12 +95,12 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold);
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(14, 17);
             label3.Name = "label3";
-            label3.Size = new Size(166, 25);
+            label3.Size = new Size(171, 24);
             label3.TabIndex = 4;
-            label3.Text = "My DashBoard";
+            label3.Text = "Activation Phrase";
             // 
             // panel_KeywordActivation
             // 
