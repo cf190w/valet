@@ -18,6 +18,7 @@ namespace Valet_UI
         private bool changedState = false;
         private Process pythonProcess;
         string keyword = "";
+        public static Form1 Instance { get; private set; }
 
         public Form1()
         {
@@ -26,7 +27,8 @@ namespace Valet_UI
             //displays the dashboard panel when intialized
             dashboard1.Visible = true;
             dictionary1.Visible = false;
-            settings1.Visible = false;           
+            settings1.Visible = false;
+            Instance = this;
         }
 
         /// <summary>
@@ -533,7 +535,7 @@ namespace Valet_UI
                         || tokenText == "separate"
                         || tokenText == "divide"
                         || tokenText == "snap"
-                        && token.Tag == PartOfSpeech.NOUN)))
+                        && token.Tag == PartOfSpeech.NOUN)
                     {
                         ShortCuts.WindowRight();
                     }

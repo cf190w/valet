@@ -39,11 +39,10 @@ namespace Valet_UI
         private void button1_Click(object sender, EventArgs e)
         {
             //Cloases the floating Menu
-            this.Close();
+            this.Hide();
 
             //Creates a new instance of the main form and displays it
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
+            Form1.Instance.Show();
 
         }
         public void changeText(string newText)
