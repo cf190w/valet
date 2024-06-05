@@ -125,17 +125,16 @@ namespace Valet_UI
                 pythonProcess.StartInfo.CreateNoWindow = true;
                 pythonProcess.Start();
                 //Start new thread to read asynchronously from stdout
-                //Thread outputThread = new Thread(() => readOutput(floatingWindow));
-                //outputThread.Start();
+                Thread outputThread = new Thread(() => readOutput(floatingWindow));
+                outputThread.Start();
                 Debug.WriteLine("started");
             }
         }
 
-        private async void readOutput(FloatingWindow floatingWindow)
+        private void readOutput(FloatingWindow floatingWindow)
         {
-            Catalyst.Models.English.Register();
+            English.Register();
             Storage.Current = new DiskStorage("cataylst-models");
-            var nlp = await Pipeline.ForAsync(Language.English);
             while (!pythonProcess.StandardOutput.EndOfStream)
             {
                 string currentOutput = pythonProcess.StandardOutput.ReadLine();
