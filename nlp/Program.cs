@@ -740,7 +740,6 @@ public class Program
                     // Call the reopen function from ShortCuts class
                     // ShortCuts.WindowReopen();
                     // Print "Back" to the console
-                    Console.WriteLine("Reopen");
                 }
             }
         }

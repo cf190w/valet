@@ -453,7 +453,11 @@ namespace Valet_UI
                     int start = token.Bounds[0];
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
-                    if(tokenText == "minimize" || tokenText == "minimise" || tokenText == "smaller" || tokenText == "downsize" || tokenText == "shrink" && token.Tag == PartOfSpeech.VERB)
+                    if(tokenText == "minimize" || tokenText == "minimise" || tokenText == "downsize" || tokenText == "shrink" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowMinimize();
+                    }
+                    else if (tokenText == "smaller" && token.Tag == PartOfSpeech.ADJ)
                     {
                         ShortCuts.WindowMinimize();
                     }
@@ -469,15 +473,24 @@ namespace Valet_UI
                     int start = token.Bounds[0];
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
-                    if(tokenText == "reopen"
-                        || tokenText == "back"
-                        || tokenText == "smaller"
+                    if (tokenText == "reopen"
                         || tokenText == "revive"
                         || tokenText == "bring"
                         || tokenText == "come"
                         || tokenText == "meant"
-                        || tokenText == "done"
-                        || tokenText == "no" && token.Tag == PartOfSpeech.VERB)
+                         && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowReopen();
+                    }
+                    else if (tokenText == "back" && token.Tag == PartOfSpeech.ADV)
+                    {
+                        ShortCuts.WindowReopen();
+                    }
+                    else if (tokenText == "done" && token.Tag == PartOfSpeech.ADJ)
+                    {
+                        ShortCuts.WindowReopen();
+                    }
+                    else if (tokenText == "no" && token.Tag == PartOfSpeech.ADV)
                     {
                         ShortCuts.WindowReopen();
                     }
@@ -493,11 +506,14 @@ namespace Valet_UI
                     int start = token.Bounds[0];
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
-                    if(tokenText == "maximize"
+                    if (tokenText == "maximize"
                         || tokenText == "maximise"
-                        || tokenText == "full"
                         || tokenText == "expand"
                         || tokenText == "enlarge" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowReopen();
+                    }
+                    else if (tokenText == "full" && token.Tag == PartOfSpeech.ADJ)
                     {
                         ShortCuts.WindowReopen();
                     }
@@ -517,9 +533,11 @@ namespace Valet_UI
                         || tokenText == "separate"
                         || tokenText == "divide"
                         || tokenText == "snap"
-                        || tokenText == "right"
-                        || tokenText == "write"
-                        && token.Tag == PartOfSpeech.VERB)
+                        && token.Tag == PartOfSpeech.NOUN)))
+                    {
+                        ShortCuts.WindowRight();
+                    }
+                    if (tokenText == "right" && PartOfSpeech.NUM == token.Tag)
                     {
                         ShortCuts.WindowRight();
                     }
@@ -536,7 +554,7 @@ namespace Valet_UI
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
                     if(tokenText == "left"
-                        && token.Tag == PartOfSpeech.VERB)
+                        && token.Tag == PartOfSpeech.NOUN)
                     {
                         ShortCuts.WindowLeft();
                     }
