@@ -33,6 +33,7 @@
             panel1 = new Panel();
             label2 = new Label();
             label3 = new Label();
+            button_ConfirmChange = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -59,6 +60,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(234, 234, 234);
+            panel1.Controls.Add(button_ConfirmChange);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
             panel1.Location = new Point(3, 73);
@@ -71,21 +73,33 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(64, 64, 64);
-            label2.Location = new Point(6, 42);
+            label2.Location = new Point(3, 33);
             label2.Name = "label2";
-            label2.Size = new Size(141, 20);
+            label2.Size = new Size(213, 40);
             label2.TabIndex = 3;
-            label2.Text = "Setting description";
+            label2.Text = "Notifies the user when a \r\nprocess has been completed";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(6, 17);
+            label3.Location = new Point(0, 9);
             label3.Name = "label3";
-            label3.Size = new Size(132, 24);
+            label3.Size = new Size(113, 24);
             label3.TabIndex = 4;
-            label3.Text = "Setting name";
+            label3.Text = "Notification";
+            // 
+            // button_ConfirmChange
+            // 
+            button_ConfirmChange.FlatStyle = FlatStyle.Flat;
+            button_ConfirmChange.ForeColor = Color.Red;
+            button_ConfirmChange.Location = new Point(292, 18);
+            button_ConfirmChange.Name = "button_ConfirmChange";
+            button_ConfirmChange.Size = new Size(80, 32);
+            button_ConfirmChange.TabIndex = 9;
+            button_ConfirmChange.Text = "Turn Off";
+            button_ConfirmChange.UseVisualStyleBackColor = false;
+            button_ConfirmChange.Click += button_ConfirmChange_Click;
             // 
             // Settings
             // 
@@ -110,5 +124,6 @@
         private Panel panel1;
         private Label label2;
         private Label label3;
+        private Button button_ConfirmChange;
     }
 }

@@ -5,5 +5,11 @@
     <Setting Name="Keyword" Type="System.String" Scope="User">
       <Value Profile="(Default)">Valet</Value>
     </Setting>
+    <Setting Name="Notification" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Input</Value>
+    </Setting>
+    <Setting Name="NotificationSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -23,7 +23,7 @@ namespace Valet_UI
             //displays the dashboard panel when intialized
             dashboard1.Visible = true;
             dictionary1.Visible = false;
-            settings1.Visible = false;
+            settings1.Visible = false;           
         }
 
         /// <summary>
@@ -125,8 +125,8 @@ namespace Valet_UI
                 pythonProcess.StartInfo.CreateNoWindow = true;
                 pythonProcess.Start();
                 //Start new thread to read asynchronously from stdout
-                Thread outputThread = new Thread(() => readOutput(floatingWindow));
-                outputThread.Start();
+                //Thread outputThread = new Thread(() => readOutput(floatingWindow));
+                //outputThread.Start();
                 Debug.WriteLine("started");
             }
         }
@@ -207,6 +207,7 @@ namespace Valet_UI
                     if (tokenText == "copy" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.copy();
+
                     }
                 }
             }
@@ -228,7 +229,7 @@ namespace Valet_UI
 
                     if (tokenText == "paste" && token.Tag == PartOfSpeech.VERB)
                     {
-                        ShortCuts.paste();
+                        ShortCuts.paste();                       
                     }
                 }
             }
@@ -251,6 +252,8 @@ namespace Valet_UI
                     if (tokenText == "undo" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.undo();
+                        
+                        
                     }
                 }
             }
@@ -273,6 +276,9 @@ namespace Valet_UI
                     if (tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.redo();
+
+                        //Sets notification text and spawns a notification window
+                        
                     }
                 }
             }
@@ -290,6 +296,9 @@ namespace Valet_UI
                     if(tokenText == "copy" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.refresh();
+
+                        //Sets notification text and spawns a notification window
+                        
                     }
                 }
             }
@@ -306,9 +315,14 @@ namespace Valet_UI
                     if(tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.redo();
+
+                        //Sets notification text and spawns a notification window
+                        
                     }
                 }
             }
+
         }
+        
     }
 }

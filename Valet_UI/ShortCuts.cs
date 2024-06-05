@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Microsoft.VisualBasic.Devices;
+using Valet_UI;
 
 public static class ShortCuts
 {
@@ -17,8 +18,10 @@ public static class ShortCuts
         AutoReset = true,
         };
 
+    private static System.Windows.Forms.Timer timerNotification;
+
     //enums and structs
-     private enum mouse_eventFlags
+    private enum mouse_eventFlags
     {
         MOUSEEVENTF_LEFTDOWN = 0x02,
         MOUSEEVENTF_LEFTUP = 0x04,
@@ -176,6 +179,11 @@ public static class ShortCuts
     public static void Start(String processName){
         Process.Start(processName);
         return;
+
+        //Sets notification text and spawns a notification window
+        string value = processName +" has started";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     } 
     
     /// <summary>
@@ -187,6 +195,11 @@ public static class ShortCuts
         Process[] process = Process.GetProcessesByName(processName);
         foreach(Process aProcess in process){
             aProcess.Kill();
+
+            //Sets notification text and spawns a notification window
+            string value = processName + " has stoped";
+            GlobalSettings.Notification = value;
+            spawnNotificationWindow();
         }
     }
     
@@ -223,6 +236,11 @@ public static class ShortCuts
         {
             SetForegroundWindow(proc.MainWindowHandle);
             SendKeys.SendWait("{f5}");
+
+            //Sets notification text and spawns a notification window
+            string value = " Refreshed active window";
+            GlobalSettings.Notification = value;
+            spawnNotificationWindow();
         }
 
     }
@@ -232,6 +250,11 @@ public static class ShortCuts
     /// </summary>
     public static void refreshBrowserTab(){
         Default("{f5}");
+
+        //Sets notification text and spawns a notification window
+        string value = "Tab refreshed";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
 
     /// <summary>
@@ -240,6 +263,11 @@ public static class ShortCuts
     public static void closeTab()
     {
         Default("^w");
+
+        //Sets notification text and spawns a notification window
+        string value = "Tab  Closed";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
 
 
@@ -264,13 +292,23 @@ public static class ShortCuts
         else {
             SendKeys.SendWait("^c");
         }
-        }
+
+        //Sets notification text and spawns a notification window
+        string value = "Text copied ";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
+    }
     
     /// <summary>
     /// pastes text from clipboard
     /// </summary>
     public static void paste(){
         Default("^v");
+
+        //Sets notification text and spawns a notification window
+        string value = " Text pasted";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
     
     /// <summary>
@@ -278,6 +316,11 @@ public static class ShortCuts
     /// </summary>
     public static void undo(){
         Default("^z");
+
+        //Sets notification text and spawns a notification window
+        string value = " Process undone";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
 
     /// <summary>
@@ -285,17 +328,37 @@ public static class ShortCuts
     /// </summary>
     public static void redo(){
         Default("^y");
+
+        //Sets notification text and spawns a notification window
+        string value = " Process redone";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
 
     public static void cut(){
         Default("^x");
+
+        //Sets notification text and spawns a notification window
+        string value = " Text cut";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
 
     public static void selectAll(){
         Default("^a");
+
+        //Sets notification text and spawns a notification window
+        string value = " Selected All";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
     public static void save(){
         Default("^s");
+
+        //Sets notification text and spawns a notification window
+        string value = " Saved";
+        GlobalSettings.Notification = value;
+        spawnNotificationWindow();
     }
     public static void WindowMinimize()
     {
@@ -390,6 +453,23 @@ public static class ShortCuts
         return Convert.ToByte(s, 16);
     }
 
+    /// <summary>
+    /// If notifications are on spawn a notification window
+    /// </summary>
+    public static void spawnNotificationWindow()
+    {
+        if (GlobalSettings.NotificationSetting)
+        {
+            NotificationWindow notificationWindow = new NotificationWindow();
+            System.Drawing.Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
 
+            int xPosition = workingArea.Left + (workingArea.Width - notificationWindow.Width) / 2;
+            int yPosition = workingArea.Top - notificationWindow.Height + 48;
+
+            notificationWindow.Location = new System.Drawing.Point(xPosition, yPosition);
+            notificationWindow.Show();
+        }
+
+    }
 }
 

@@ -24,5 +24,31 @@ namespace Valet_UI
                 Properties.Settings.Default.Save();
             }
         }
+
+        public static string Notification
+        {
+            get
+            {
+                return Properties.Settings.Default.Notification;
+            }
+            set
+            {
+                Properties.Settings.Default.Notification = value;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        public static bool NotificationSetting
+        {
+            get
+            {
+               return Properties.Settings.Default.NotificationSetting;
+            }
+            set
+            {
+                Properties.Settings.Default.NotificationSetting = value;
+                Properties.Settings.Default.Save();
+            }
+        }
     }
 }
