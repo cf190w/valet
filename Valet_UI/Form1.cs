@@ -14,7 +14,10 @@ namespace Valet_UI
     public partial class Form1 : Form
     {
         private bool isFirstTime = false;
+        private bool keywordBool = false;
+        private bool changedState = false;
         private Process pythonProcess;
+        string keyword = "";
 
         public Form1()
         {
@@ -103,7 +106,7 @@ namespace Valet_UI
             floatingWindow.Location = new System.Drawing.Point(xPosition, yPosition);
             floatingWindow.changeText("Loading...");
             floatingWindow.Show();
-
+            keyword = GlobalSettings.Keyword;
 
             if (!isFirstTime)
             {
@@ -133,6 +136,10 @@ namespace Valet_UI
 
         private void readOutput(FloatingWindow floatingWindow)
         {
+            Invoke((MethodInvoker)delegate
+            {
+                floatingWindow.changeText("Listening for keyword");
+            });
             English.Register();
             Storage.Current = new DiskStorage("cataylst-models");
             while (!pythonProcess.StandardOutput.EndOfStream)
@@ -142,8 +149,21 @@ namespace Valet_UI
                 {
 
                 }
-                else
+                else if (currentOutput.Contains(keyword))
                 {
+                    keywordBool = true;
+                }
+                else if(keywordBool) 
+                {
+                    if (!changedState)
+                    {
+                        changedState = true;    
+                    Invoke((MethodInvoker)delegate
+                    {
+                        floatingWindow.changeText("keyword heard, valet now actively listening");
+                    });
+                        Thread.Sleep(5000);
+                    }
                     var doc = new Document(currentOutput, Language.English);
                     // Update the UI using the main thread
                     Invoke((MethodInvoker)delegate
