@@ -245,6 +245,8 @@ public static class ShortCuts
     /// <param name="processName"></param>
     public static void StopExact(String processName){
         Process[] process = Process.GetProcessesByName(processName);
+        if (process.Length == 0)
+        { return; }
         foreach(Process aProcess in process){
             aProcess.Kill();
         }

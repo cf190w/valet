@@ -274,6 +274,19 @@ namespace Valet_UI
                         // If it does, call the left function
                         leftNLP(doc);
                     }
+                    else if (doc.Value.Contains("stop")
+                        ||doc.Value.Contains("stop"))
+                    {
+                        if (doc.Value.Contains("firefox")
+                        ||doc.Value.Contains("fire fox"))
+                        {
+                            nlpFirefox(doc);
+                        }
+                        else if (doc.Value.Contains("chrome"))
+                        {
+                            chromeNLP(doc);
+                        }
+                    }
                 }
             }
         }
@@ -546,6 +559,42 @@ namespace Valet_UI
                         && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.WindowReopen();
+                    }
+                }
+            }
+        }
+        private static void nlpFirefox(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "close"
+                        && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.StopExact("firefox");
+                        ShortCuts.StopExact("Firefox");
+                    }
+                }
+            }
+        }
+        private static void chromeNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "close"
+                        && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.StopExact("Google Chrome");
+                        ShortCuts.StopExact("chrome");
                     }
                 }
             }
