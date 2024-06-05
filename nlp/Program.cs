@@ -1,4 +1,4 @@
-﻿using System;
+﻿Value System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Catalyst;
@@ -1691,6 +1691,7 @@ public class Program
                     // ShortCuts.refresh();
                     // Print "Refresh" to the console
                     Console.WriteLine("Refresh");
+
                 }
             }
         }

@@ -171,12 +171,16 @@ namespace Valet_UI
                         floatingWindow.changeText(currentOutput);
                     });
                     
-                    if (currentOutput.Contains("copy"))
+                    if (currentOutput.Contains("copy")
+                        ||currentOutput.Contains("take")
+                        ||doc.Value.Contains("grab"))
                     {
                        copyNLP(doc);
-
                     }
-                    else if (currentOutput.Contains("paste"))
+                    else if (currentOutput.Contains("paste")
+                        ||currentOutput.Contains("taste")
+                        ||currentOutput.Contains("post")
+                        ||currentOutput.Contains("haste"))
                     {
                         pasteNLP(doc);  
                     }
@@ -191,6 +195,189 @@ namespace Valet_UI
                     else if (currentOutput.Contains("redo"))
                     {
                         redoNLP(doc);
+                    }
+                    else if (doc.Value.Contains("insert"))
+                    {
+                        // If it does, call the insert function 
+                        insert(doc);
+                    }
+                    // Check if the 'input' string contains the word "close"
+                    else if (doc.Value.Contains("close"))
+                    {
+                        // If it does, call the close function 
+                        close(doc);
+                    }
+                    else if (doc.Value.Contains("shut"))
+                    {
+                        // If it does, call the shut function 
+                        shut(doc);
+                    }
+                    // Check if the 'input' string contains the word "undo"
+                    else if (doc.Value.Contains("undo"))
+                    {
+                        // If it does, call the undo function 
+                        undo(doc);
+                    }
+                    // Check if the 'input' string contains the word "start"
+                    else if (doc.Value.Contains("start"))
+                    {
+                        // If it does, call the start function 
+                        start(doc);
+                    }
+                    else if (doc.Value.Contains("cut")
+                        ||doc.Value.Contains("remove")
+                        ||doc.Value.Contains("trim"))
+                    {
+                        cutNLP(doc);
+                    }
+                    else if (doc.Value.Contains("delete"))
+                    {
+                        // If it does, call the delete function
+                        delete(doc);
+                    }
+                    else if (doc.Value.Contains("select")
+                        ||doc.Value.Contains("highlight"))
+                    {
+                        // If it does, call the select function
+                        selectAllNLP(doc);
+                    }
+                    else if (doc.Value.Contains("save"))
+                    {
+                        // If it does, call the save function
+                        save(doc);
+                    }
+                    else if (doc.Value.Contains("store"))
+                    {
+                        // If it does, call the store function
+                        store(doc);
+                    }
+                    else if (doc.Value.Contains("hold"))
+                    {
+                        // If it does, call the hold function
+                        hold(doc);
+                    }
+                    else if (doc.Value.Contains("minimize")
+                        ||doc.Value.Contains("minimise")
+                        ||doc.Value.Contains("smaller")
+                        ||doc.Value.Contains("downsize")
+                        ||doc.Value.Contains("shrink"))
+                    {
+                        shrinkNLP(doc);
+                    }
+                    else if (doc.Value.Contains("minimise"))
+                    {
+                        // If it does, call the minimise function
+                        minimise(doc);
+                    }
+                    else if (doc.Value.Contains("smaller"))
+                    {
+                        // If it does, call the minimise function
+                        smaller(doc);
+                    }
+                    else if (doc.Value.Contains("downsize"))
+                    {
+                        // If it does, call the downsize function
+                        downsize(doc);
+                    }
+                    else if (doc.Value.Contains("shrink"))
+                    {
+                        // If it does, call the shrink function
+                        shrink(doc);
+                    }
+                    else if (doc.Value.Contains("reopen"))
+                    {
+                        // If it does, call the reopen function
+                        reopen(doc);
+                    }
+                    else if (doc.Value.Contains("back"))
+                    {
+                        // If it does, call the shrink function
+                        back(doc);
+                    }
+                    else if (doc.Value.Contains("revive"))
+                    {
+                        // If it does, call the revive function
+                        revive(doc);
+                    }
+                    else if (doc.Value.Contains("bring"))
+                    {
+                        // If it does, call the bring function
+                        bring(doc);
+                    }
+                    else if (doc.Value.Contains("come"))
+                    {
+                        // If it does, call the come function
+                        come(doc);
+                    }
+                    else if (doc.Value.Contains("meant"))
+                    {
+                        // If it does, call the meant function
+                        meant(doc);
+                    }
+                    else if (doc.Value.Contains("done"))
+                    {
+                        // If it does, call the done function
+                        done(doc);
+                    }
+                    else if (doc.Value.Contains("no"))
+                    {
+                        // If it does, call the no function
+                        no(doc);
+                    }
+                    else if (doc.Value.Contains("maximize"))
+                    {
+                        // If it does, call the maximize function
+                        maximize(doc);
+                    }
+                    else if (doc.Value.Contains("maximise"))
+                    {
+                        // If it does, call the maximise function
+                        maximise(doc);
+                    }
+                    else if (doc.Value.Contains("full"))
+                    {
+                        // If it does, call the full function
+                        full(doc);
+                    }
+                    else if (doc.Value.Contains("enlarge"))
+                    {
+                        // If it does, call the enlarge function
+                        enlarge(doc);
+                    }
+                    else if (doc.Value.Contains("expand"))
+                    {
+                        // If it does, call the expand function
+                        expand(doc);
+                    }
+                    else if (doc.Value.Contains("split"))
+                    {
+                        // If it does, call the split function
+                        split(doc);
+                    }
+                    else if (doc.Value.Contains("left"))
+                    {
+                        // If it does, call the left function
+                        left(doc);
+                    }
+                    else if (doc.Value.Contains("right"))
+                    {
+                        // If it does, call the right function
+                        right(doc);
+                    }
+                    else if (doc.Value.Contains("seperate"))
+                    {
+                        // If it does, call the seperate function
+                        seperate(doc);
+                    }
+                    else if (doc.Value.Contains("divide"))
+                    {
+                        // If it does, call the divide function
+                        divide(doc);
+                    }
+                    else if (doc.Value.Contains("snap"))
+                    {
+                        // If it does, call the snap function
+                        snap(doc);
                     }
                 }
             }
@@ -223,7 +410,7 @@ namespace Valet_UI
                     // Extract the token text from the original text
                     string tokenText = doc.Value.Substring(start, end - start + 1);
 
-                    if (tokenText == "copy" && token.Tag == PartOfSpeech.VERB)
+                    if (tokenText == "copy" || tokenText == "take" || tokenText == "grab" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.copy();
 
@@ -246,7 +433,11 @@ namespace Valet_UI
                     // Extract the token text from the original text
                     string tokenText = doc.Value.Substring(start, end - start + 1);
 
-                    if (tokenText == "paste" && token.Tag == PartOfSpeech.VERB)
+                    if (tokenText == "paste" ||
+                        tokenText == "post" ||
+                        tokenText == "taste" ||
+                        tokenText == "haste"
+                        && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.paste();                       
                     }
@@ -295,9 +486,6 @@ namespace Valet_UI
                     if (tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.redo();
-
-                        //Sets notification text and spawns a notification window
-                        
                     }
                 }
             }
@@ -312,11 +500,10 @@ namespace Valet_UI
                     int start = token.Bounds[0];
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
-                    if(tokenText == "copy" && token.Tag == PartOfSpeech.VERB)
+                    if(tokenText == "refresh" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.refresh();
 
-                        //Sets notification text and spawns a notification window
                         
                     }
                 }
@@ -334,14 +521,58 @@ namespace Valet_UI
                     if(tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.redo();
-
                         //Sets notification text and spawns a notification window
-                        
                     }
                 }
             }
-
         }
-        
+        private static void cutNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "cut" || tokenText == "remove" || tokenText == "trim" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.cut();
+                    }
+                }
+            }
+        }
+        private static void selectAllNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "select" || tokenText == "highlight" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.selectAll();
+                    }
+                }
+            }
+        }
+        private static void shrinkNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "minimize" || tokenText == "minimise" || tokenText == "smaller" || tokenText == "downsize" || tokenText == "shrink" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowMinimize();
+                    }
+                }
+            }
+        }
     }
 }
