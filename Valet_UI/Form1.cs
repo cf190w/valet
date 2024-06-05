@@ -180,7 +180,8 @@ namespace Valet_UI
                     else if (currentOutput.Contains("paste")
                         ||currentOutput.Contains("taste")
                         ||currentOutput.Contains("post")
-                        ||currentOutput.Contains("haste"))
+                        ||currentOutput.Contains("haste")
+                        ||currentOutput.Contains("insert"))
                     {
                         pasteNLP(doc);  
                     }
@@ -196,11 +197,7 @@ namespace Valet_UI
                     {
                         redoNLP(doc);
                     }
-                    else if (doc.Value.Contains("insert"))
-                    {
-                        // If it does, call the insert function 
-                        insert(doc);
-                    }
+                    /*
                     // Check if the 'input' string contains the word "close"
                     else if (doc.Value.Contains("close"))
                     {
@@ -212,49 +209,26 @@ namespace Valet_UI
                         // If it does, call the shut function 
                         shut(doc);
                     }
-                    // Check if the 'input' string contains the word "undo"
-                    else if (doc.Value.Contains("undo"))
-                    {
-                        // If it does, call the undo function 
-                        undo(doc);
-                    }
-                    // Check if the 'input' string contains the word "start"
                     else if (doc.Value.Contains("start"))
                     {
                         // If it does, call the start function 
                         start(doc);
                     }
+                    */
                     else if (doc.Value.Contains("cut")
                         ||doc.Value.Contains("remove")
-                        ||doc.Value.Contains("trim"))
+                        ||doc.Value.Contains("trim")
+                        ||doc.Value.Contains("delete"))
                     {
                         cutNLP(doc);
                     }
-                    else if (doc.Value.Contains("delete"))
-                    {
-                        // If it does, call the delete function
-                        delete(doc);
-                    }
                     else if (doc.Value.Contains("select")
-                        ||doc.Value.Contains("highlight"))
+                        ||doc.Value.Contains("highlight")
+                        ||doc.Value.Contains("save")
+                        ||doc.Value.Contains("store")
+                        ||doc.Value.Contains("hold"))
                     {
-                        // If it does, call the select function
                         selectAllNLP(doc);
-                    }
-                    else if (doc.Value.Contains("save"))
-                    {
-                        // If it does, call the save function
-                        save(doc);
-                    }
-                    else if (doc.Value.Contains("store"))
-                    {
-                        // If it does, call the store function
-                        store(doc);
-                    }
-                    else if (doc.Value.Contains("hold"))
-                    {
-                        // If it does, call the hold function
-                        hold(doc);
                     }
                     else if (doc.Value.Contains("minimize")
                         ||doc.Value.Contains("minimise")
@@ -264,120 +238,41 @@ namespace Valet_UI
                     {
                         shrinkNLP(doc);
                     }
-                    else if (doc.Value.Contains("minimise"))
-                    {
-                        // If it does, call the minimise function
-                        minimise(doc);
-                    }
-                    else if (doc.Value.Contains("smaller"))
-                    {
-                        // If it does, call the minimise function
-                        smaller(doc);
-                    }
-                    else if (doc.Value.Contains("downsize"))
-                    {
-                        // If it does, call the downsize function
-                        downsize(doc);
-                    }
-                    else if (doc.Value.Contains("shrink"))
-                    {
-                        // If it does, call the shrink function
-                        shrink(doc);
-                    }
-                    else if (doc.Value.Contains("reopen"))
+                    else if (doc.Value.Contains("reopen")
+                        ||doc.Value.Contains("back")
+                        ||doc.Value.Contains("revive")
+                        ||doc.Value.Contains("bring")
+                        ||doc.Value.Contains("come")
+                        ||doc.Value.Contains("meant")
+                        ||doc.Value.Contains("done")
+                        ||doc.Value.Contains("no"))
                     {
                         // If it does, call the reopen function
-                        reopen(doc);
+                        reopenNLP(doc);
                     }
-                    else if (doc.Value.Contains("back"))
-                    {
-                        // If it does, call the shrink function
-                        back(doc);
-                    }
-                    else if (doc.Value.Contains("revive"))
-                    {
-                        // If it does, call the revive function
-                        revive(doc);
-                    }
-                    else if (doc.Value.Contains("bring"))
-                    {
-                        // If it does, call the bring function
-                        bring(doc);
-                    }
-                    else if (doc.Value.Contains("come"))
-                    {
-                        // If it does, call the come function
-                        come(doc);
-                    }
-                    else if (doc.Value.Contains("meant"))
-                    {
-                        // If it does, call the meant function
-                        meant(doc);
-                    }
-                    else if (doc.Value.Contains("done"))
-                    {
-                        // If it does, call the done function
-                        done(doc);
-                    }
-                    else if (doc.Value.Contains("no"))
-                    {
-                        // If it does, call the no function
-                        no(doc);
-                    }
-                    else if (doc.Value.Contains("maximize"))
+                    else if (doc.Value.Contains("maximize")
+                        ||doc.Value.Contains("maximise")
+                        ||doc.Value.Contains("full")
+                        ||doc.Value.Contains("expand")
+                        ||doc.Value.Contains("enlarge"))
                     {
                         // If it does, call the maximize function
-                        maximize(doc);
+                        maxCurrentNLP(doc);
                     }
-                    else if (doc.Value.Contains("maximise"))
-                    {
-                        // If it does, call the maximise function
-                        maximise(doc);
-                    }
-                    else if (doc.Value.Contains("full"))
-                    {
-                        // If it does, call the full function
-                        full(doc);
-                    }
-                    else if (doc.Value.Contains("enlarge"))
-                    {
-                        // If it does, call the enlarge function
-                        enlarge(doc);
-                    }
-                    else if (doc.Value.Contains("expand"))
-                    {
-                        // If it does, call the expand function
-                        expand(doc);
-                    }
-                    else if (doc.Value.Contains("split"))
+                    else if (doc.Value.Contains("split")
+                        ||doc.Value.Contains("separate")
+                        ||doc.Value.Contains("divide")
+                        ||doc.Value.Contains("snap")
+                        ||doc.Value.Contains("right")
+                        ||doc.Value.Contains("write"))
                     {
                         // If it does, call the split function
-                        split(doc);
+                        rightNLP(doc);
                     }
                     else if (doc.Value.Contains("left"))
                     {
                         // If it does, call the left function
-                        left(doc);
-                    }
-                    else if (doc.Value.Contains("right"))
-                    {
-                        // If it does, call the right function
-                        right(doc);
-                    }
-                    else if (doc.Value.Contains("seperate"))
-                    {
-                        // If it does, call the seperate function
-                        seperate(doc);
-                    }
-                    else if (doc.Value.Contains("divide"))
-                    {
-                        // If it does, call the divide function
-                        divide(doc);
-                    }
-                    else if (doc.Value.Contains("snap"))
-                    {
-                        // If it does, call the snap function
-                        snap(doc);
+                        leftNLP(doc);
                     }
                 }
             }
@@ -436,7 +331,8 @@ namespace Valet_UI
                     if (tokenText == "paste" ||
                         tokenText == "post" ||
                         tokenText == "taste" ||
-                        tokenText == "haste"
+                        tokenText == "haste" ||
+                        tokenText == "insert"
                         && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.paste();                       
@@ -503,8 +399,6 @@ namespace Valet_UI
                     if(tokenText == "refresh" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.refresh();
-
-                        
                     }
                 }
             }
@@ -521,7 +415,6 @@ namespace Valet_UI
                     if(tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.redo();
-                        //Sets notification text and spawns a notification window
                     }
                 }
             }
@@ -535,7 +428,7 @@ namespace Valet_UI
                     int start = token.Bounds[0];
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
-                    if(tokenText == "cut" || tokenText == "remove" || tokenText == "trim" && token.Tag == PartOfSpeech.VERB)
+                    if(tokenText == "cut" || tokenText == "remove" || tokenText == "trim" || tokenText == "delete" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.cut();
                     }
@@ -551,7 +444,7 @@ namespace Valet_UI
                     int start = token.Bounds[0];
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
-                    if(tokenText == "select" || tokenText == "highlight" && token.Tag == PartOfSpeech.VERB)
+                    if(tokenText == "select" || tokenText == "highlight" || tokenText == "save" || tokenText == "store" || tokenText == "hold" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.selectAll();
                     }
@@ -570,6 +463,89 @@ namespace Valet_UI
                     if(tokenText == "minimize" || tokenText == "minimise" || tokenText == "smaller" || tokenText == "downsize" || tokenText == "shrink" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.WindowMinimize();
+                    }
+                }
+            }
+        }
+        private static void reopenNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "reopen"
+                        || tokenText == "back"
+                        || tokenText == "smaller"
+                        || tokenText == "revive"
+                        || tokenText == "bring"
+                        || tokenText == "come"
+                        || tokenText == "meant"
+                        || tokenText == "done"
+                        || tokenText == "no" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowReopen();
+                    }
+                }
+            }
+        }
+        private static void maxCurrentNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "maximize"
+                        || tokenText == "maximise"
+                        || tokenText == "full"
+                        || tokenText == "expand"
+                        || tokenText == "enlarge" && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowReopen();
+                    }
+                }
+            }
+        }
+        private static void rightNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "split"
+                        || tokenText == "separate"
+                        || tokenText == "divide"
+                        || tokenText == "snap"
+                        || tokenText == "right"
+                        || tokenText == "write"
+                        && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowReopen();
+                    }
+                }
+            }
+        }
+        private static void leftNLP(Document doc)
+        {
+            foreach (var tokenList in doc.TokensData)
+            {
+                foreach (var token in tokenList)
+                {
+                    int start = token.Bounds[0];
+                    int end = token.Bounds[1];
+                    string tokenText = doc.Value.Substring(start, end - start + 1);
+                    if(tokenText == "left"
+                        && token.Tag == PartOfSpeech.VERB)
+                    {
+                        ShortCuts.WindowReopen();
                     }
                 }
             }
