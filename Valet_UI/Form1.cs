@@ -162,15 +162,15 @@ namespace Valet_UI
                     {
                         floatingWindow.changeText("keyword heard, valet now actively listening");
                     });
-                        Thread.Sleep(5000);
+                        Thread.Sleep(1000);
                     }
-                    var doc = new Document(currentOutput, Language.English);
                     // Update the UI using the main thread
                     Invoke((MethodInvoker)delegate
                     {
                         floatingWindow.changeText(currentOutput);
                     });
                     
+                    var doc = new Document(currentOutput, Language.English);
                     if (currentOutput.Contains("copy")
                         ||currentOutput.Contains("take")
                         ||doc.Value.Contains("grab"))
@@ -275,15 +275,19 @@ namespace Valet_UI
                         leftNLP(doc);
                     }
                     else if (doc.Value.Contains("stop")
-                        ||doc.Value.Contains("stop"))
+                        ||doc.Value.Contains("close"))
                     {
                         if (doc.Value.Contains("firefox")
                         ||doc.Value.Contains("fire fox"))
                         {
+                            ShortCuts.StopExact("firefox");
+                            ShortCuts.StopExact("Firefox");
                             nlpFirefox(doc);
                         }
                         else if (doc.Value.Contains("chrome"))
                         {
+                            ShortCuts.StopExact("chrome");
+                            ShortCuts.StopExact("Google Chrome");
                             chromeNLP(doc);
                         }
                     }
@@ -371,30 +375,6 @@ namespace Valet_UI
                     if (tokenText == "undo" && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.undo();
-                        
-                        
-                    }
-                }
-            }
-        }
-
-        private static void redo(Document doc)
-        {
-            // Loop through each token list in the document
-            foreach (var tokenList in doc.TokensData)
-            {
-                // Loop through each token in the token list
-                foreach (var token in tokenList)
-                {
-                    // Get the start and end indices of the token in the original text
-                    int start = token.Bounds[0];
-                    int end = token.Bounds[1];
-                    // Extract the token text from the original text
-                    string tokenText = doc.Value.Substring(start, end - start + 1);
-
-                    if (tokenText == "redo" && token.Tag == PartOfSpeech.VERB)
-                    {
-                        ShortCuts.redo();
                     }
                 }
             }
@@ -541,7 +521,7 @@ namespace Valet_UI
                         || tokenText == "write"
                         && token.Tag == PartOfSpeech.VERB)
                     {
-                        ShortCuts.WindowReopen();
+                        ShortCuts.WindowRight();
                     }
                 }
             }
@@ -558,7 +538,7 @@ namespace Valet_UI
                     if(tokenText == "left"
                         && token.Tag == PartOfSpeech.VERB)
                     {
-                        ShortCuts.WindowReopen();
+                        ShortCuts.WindowLeft();
                     }
                 }
             }
@@ -573,6 +553,7 @@ namespace Valet_UI
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
                     if(tokenText == "close"
+                        || tokenText == "stop"
                         && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.StopExact("firefox");
@@ -591,6 +572,7 @@ namespace Valet_UI
                     int end = token.Bounds[1];
                     string tokenText = doc.Value.Substring(start, end - start + 1);
                     if(tokenText == "close"
+                        || tokenText == "stop"
                         && token.Tag == PartOfSpeech.VERB)
                     {
                         ShortCuts.StopExact("Google Chrome");
