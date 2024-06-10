@@ -282,14 +282,10 @@ namespace Valet_UI
                         if (doc.Value.Contains("firefox")
                         ||doc.Value.Contains("fire fox"))
                         {
-                            ShortCuts.StopExact("firefox");
-                            ShortCuts.StopExact("Firefox");
                             nlpFirefox(doc);
                         }
                         else if (doc.Value.Contains("chrome"))
                         {
-                            ShortCuts.StopExact("chrome");
-                            ShortCuts.StopExact("Google Chrome");
                             chromeNLP(doc);
                         }
                     }
