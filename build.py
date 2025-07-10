@@ -6,6 +6,7 @@ import os
 import zipfile
 import subprocess
 
+#wow
 
 current_os = sys.platform
 model_url = "https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip"
@@ -42,14 +43,14 @@ if subdir and script_name and build_command:
             zip_ref.extractall(extract_dir)
         print("ZIP file extracted successfully.")
 
-        # Delete the ZIP file
+        #delete the ZIP file
         os.remove(output_path)
         print("ZIP file deleted.")
 
-        # Define the new model name
+        #define the new model name
         new_model_name = "vosk-model-small-en-us-0.15"  # Update with the desired model name
 
-        # Update vosk_stt.py
+        #update vosk_stt.py
         script_path = os.path.join(extract_dir, script_name)
         with open(script_path, "r") as file:
             lines = file.readlines()
@@ -66,13 +67,13 @@ if subdir and script_name and build_command:
 
         print(f"Updated {script_name} in {extract_dir}.")
 
-        # Navigate to the appropriate directory and run the build command
+        #navigate to the appropriate directory and run the build command
         os.chdir(subdir)
         print(f"Changed directory to {os.getcwd()}.")
 
         process = subprocess.Popen(build_command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
 
-        # Display real-time output
+        #display real-time output
         for line in process.stdout:
             print(line, end="")
 
